@@ -1,0 +1,35 @@
+//
+//  PrefixHeader.pch
+//  BaseProject
+//
+//  Created by 张熔冰 on 2018/10/12.
+//  Copyright © 2018年 Lovcreate. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+//宏定义
+#ifdef DEBUG
+
+#define DebugLog(...){\
+NSDateFormatter* format = [[NSDateFormatter alloc] init];\
+format.dateFormat = @"YYYY-MM-dd HH:mm:ss";\
+NSString *dateStr = [format stringFromDate:[NSDate date]];\
+printf("%s{行数: %d|方法:%s}%s\n",[dateStr UTF8String], __LINE__, __func__, [[NSString stringWithFormat:__VA_ARGS__]UTF8String]);\
+}
+#else
+#define DebugLog(...)
+#endif
+
+//获取App名称
+#define kApp_Name [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"]
+//获取App版本号
+#define kApp_Version [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+//获取App build版本
+#define kApp_Build [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]
+//适配iPhoneX
+#define kStatusBarAndNavigationBarHeight IS_IphoneX?64:88
+
+#import "LanguageManager.h"//国际化
+#endif /* PrefixHeader_pch */

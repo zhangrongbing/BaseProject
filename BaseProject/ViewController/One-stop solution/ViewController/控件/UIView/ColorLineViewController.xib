@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ColorLineViewController">
+            <connections>
+                <outlet property="colorLineView" destination="eua-ie-48Z" id="5xh-zD-0CC"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="HrS-yY-aIR">
+                    <rect key="frame" x="0.0" y="623" width="375" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="8Hr-IV-CJ0"/>
+                    </constraints>
+                    <segments>
+                        <segment title="Normal"/>
+                        <segment title="Enable"/>
+                        <segment title="Unable"/>
+                    </segments>
+                    <connections>
+                        <action selector="valueChanged:" destination="-1" eventType="valueChanged" id="CsZ-Kv-xvy"/>
+                    </connections>
+                </segmentedControl>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eua-ie-48Z" customClass="ColorLineView">
+                    <rect key="frame" x="0.0" y="104" width="375" height="30"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="oAm-Th-gdV"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="eua-ie-48Z" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="K9N-4x-qQx"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="HrS-yY-aIR" secondAttribute="trailing" id="Zk0-EG-lDh"/>
+                <constraint firstItem="HrS-yY-aIR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bcu-SQ-OKu"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="HrS-yY-aIR" secondAttribute="bottom" id="jF5-91-6hg"/>
+                <constraint firstItem="eua-ie-48Z" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="84" id="nsh-6C-Ow3"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="eua-ie-48Z" secondAttribute="trailing" id="rhz-Q5-vPe"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+        </view>
+    </objects>
+</document>

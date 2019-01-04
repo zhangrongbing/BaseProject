@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginTwoViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kYk-hn-6YT">
+                    <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="SUX-Nv-nr2"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="x99-c0-B4T">
+                    <rect key="frame" x="0.0" y="93" width="375" height="44"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f2i-lV-1JP">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="Y7h-py-bRa"/>
+                            </constraints>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vE7-6C-vbf">
+                    <rect key="frame" x="0.0" y="151" width="375" height="110"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLa-7c-eFh">
+                            <rect key="frame" x="0.0" y="0.0" width="78" height="110"/>
+                            <inset key="contentEdgeInsets" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
+                            <state key="normal" title="Button"/>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOb-6L-3Pr">
+                            <rect key="frame" x="78" y="0.0" width="219" height="110"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bt2-UD-Gam">
+                            <rect key="frame" x="297" y="0.0" width="78" height="110"/>
+                            <inset key="contentEdgeInsets" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
+                            <state key="normal" title="Button"/>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="110" id="V3U-WG-HYc"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="0.59215686270000001" green="0.62352941179999999" blue="0.78823529410000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <constraints>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="kYk-hn-6YT" secondAttribute="bottom" id="AsN-1l-Bh8"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="kYk-hn-6YT" secondAttribute="trailing" id="LCZ-Pl-ZNr"/>
+                <constraint firstItem="x99-c0-B4T" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="73" id="M3v-WS-Rsz"/>
+                <constraint firstItem="vE7-6C-vbf" firstAttribute="top" secondItem="x99-c0-B4T" secondAttribute="bottom" constant="14" id="Plb-Py-m8N"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="vE7-6C-vbf" secondAttribute="trailing" id="QQh-Sy-d0y"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="x99-c0-B4T" secondAttribute="trailing" id="WDe-mK-sKk"/>
+                <constraint firstItem="vE7-6C-vbf" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="chx-lW-Cxq"/>
+                <constraint firstItem="x99-c0-B4T" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="iV9-IM-6e3"/>
+                <constraint firstItem="kYk-hn-6YT" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="yEi-h9-n62"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="117.59999999999999" y="98.50074962518741"/>
+        </view>
+    </objects>
+</document>

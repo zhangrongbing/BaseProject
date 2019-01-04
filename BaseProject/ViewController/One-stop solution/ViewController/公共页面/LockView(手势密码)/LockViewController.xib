@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LockViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwN-1L-aOK">
+                    <rect key="frame" x="16" y="30" width="92" height="30"/>
+                    <state key="normal" title="设置手势密码"/>
+                    <connections>
+                        <action selector="pressSetLockButton:" destination="-1" eventType="touchUpInside" id="RZr-mw-8UD"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hb3-Ij-QHM">
+                    <rect key="frame" x="16" y="68" width="92" height="30"/>
+                    <state key="normal" title="修改手势密码"/>
+                    <connections>
+                        <action selector="pressResetLockButton:" destination="-1" eventType="touchUpInside" id="yAy-6t-4HW"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4LT-67-M4W">
+                    <rect key="frame" x="16" y="108" width="92" height="30"/>
+                    <state key="normal" title="验证手势密码"/>
+                    <connections>
+                        <action selector="pressVerificationButton:" destination="-1" eventType="touchUpInside" id="u14-Nr-MqN"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z0I-fj-eLl">
+                    <rect key="frame" x="16" y="148" width="92" height="30"/>
+                    <state key="normal" title="移除手势密码"/>
+                    <connections>
+                        <action selector="pressRemoveButton:" destination="-1" eventType="touchUpInside" id="MKC-7i-7FM"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="4LT-67-M4W" firstAttribute="top" secondItem="hb3-Ij-QHM" secondAttribute="bottom" constant="10" id="0Oc-Nu-0gq"/>
+                <constraint firstItem="z0I-fj-eLl" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="16" id="3Md-7H-gvm"/>
+                <constraint firstItem="hb3-Ij-QHM" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="16" id="6Zt-Z7-MPu"/>
+                <constraint firstItem="4LT-67-M4W" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="16" id="bE2-rc-4PN"/>
+                <constraint firstItem="gwN-1L-aOK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="dgJ-7c-5no"/>
+                <constraint firstItem="z0I-fj-eLl" firstAttribute="top" secondItem="4LT-67-M4W" secondAttribute="bottom" constant="10" id="i7J-dE-r65"/>
+                <constraint firstItem="hb3-Ij-QHM" firstAttribute="top" secondItem="gwN-1L-aOK" secondAttribute="bottom" constant="8" id="scu-W5-06u"/>
+                <constraint firstItem="gwN-1L-aOK" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="10" id="v9A-mV-yHr"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+        </view>
+    </objects>
+</document>
