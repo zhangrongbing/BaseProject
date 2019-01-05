@@ -75,7 +75,6 @@
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     self.pageController.delegate = self;
     self.pageController.dataSource = self;
-    self.pageController.view.backgroundColor = [UIColor redColor];
     UIViewController *controller = [self.childControllers objectAtIndex:self.curControllerIndex];
     [self.pageController setViewControllers:@[controller] direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
     self.pageController.view.translatesAutoresizingMaskIntoConstraints = NO;
