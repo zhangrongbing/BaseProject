@@ -7,114 +7,129 @@
 //
 
 #import "ContainerViewController.h"
-#import "ContainerView.h"
-#import "Masonry.h"
-#import "UIColor+Addition.h"
-#import "FirstViewController.h"
-#import "SecondTableViewController.h"
-#import "ThreeTableViewController.h"
-#import "UIDevice+Addition.h"
 
-@interface ContainerViewController ()
+#define SliderTableMenuViewHeight 45.f
 
-@property(nonatomic, strong) NSArray *tabs;
+@interface ContainerViewController ()<UIPageViewControllerDelegate, UIPageViewControllerDataSource, SegmentControlDelegate, SegmentControlDataSource>
 
-@property(nonatomic, strong) ContainerView *containerView;
-@property(nonatomic, strong) FirstViewController *firstVC;
-@property(nonatomic, strong) SecondTableViewController *secondVC;
-@property(nonatomic, strong) ThreeTableViewController *threeVC;
-
-@property(nonatomic, strong) FirstViewController *firstVC1;
-@property(nonatomic, strong) SecondTableViewController *secondVC1;
-@property(nonatomic, strong) ThreeTableViewController *threeVC1;
-
-@property(nonatomic, strong) FirstViewController *firstVC2;
-@property(nonatomic, strong) SecondTableViewController *secondVC2;
-@property(nonatomic, strong) ThreeTableViewController *threeVC2;
+@property(nonatomic, strong) UIPageViewController *pageController;
+@property(nonatomic, strong) NSArray *childControllers;//自控制器列表
+@property(nonatomic, assign) NSInteger curControllerIndex;//当前显示的controller下标
 
 @end
 
 @implementation ContainerViewController
 
+-(instancetype)initWithIndex:(NSInteger)index{
+    if (self = [super init]) {
+        _segmentControl = [[SegmentControl alloc] initWithStyle:SegmentControlStyleEqual defaultIndex:index];
+    }
+    return self;
+}
+
++(instancetype)containerWithControllers:(NSArray*)controllers defalutControllerIndex:(NSInteger)index{
+    ContainerViewController *container = [[ContainerViewController alloc] initWithIndex:index];
+    container.childControllers = controllers;
+    container.curControllerIndex = index;
+    return container;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.containerView = [[ContainerView alloc] initWithFrame:CGRectMake(0, 64.f, kScreenWidth, kScreenHeight - 64.f) style:SegmentControlStylePlain];
-    self.containerView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    [self.containerView setViewControllers:@[self.firstVC, self.secondVC, self.threeVC, self.firstVC1, self.secondVC1, self.threeVC1, self.firstVC2, self.secondVC2, self.threeVC2] defaultIndex:0];
-    [self.view addSubview:self.containerView];
+    self.view.backgroundColor = [UIColor whiteColor];
+    //初始化segment
+    [self initSegmentControl];
+    [self initPageController];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-#pragma mark - Getter and Setter
--(FirstViewController*)firstVC{
-    if (!_firstVC) {
-        _firstVC = [[FirstViewController alloc] init];
-        _firstVC.title = @"关注";
+-(void)viewWillLayoutSubviews{
+    [super viewWillLayoutSubviews];
+    //segmentControl
+    UIView *segmentControl = self.segmentControl;
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[segmentControl]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(segmentControl)]];
+    NSDictionary *metrics;
+    if (@available(iOS 11, *)) {
+        metrics = @{@"NavigationBarHeight":@(self.view.safeAreaInsets.top)};
+    }else{
+        metrics = @{@"NavigationBarHeight":@(64)};
     }
-    return _firstVC;
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-NavigationBarHeight-[segmentControl(==45)]" options:0 metrics:metrics views:NSDictionaryOfVariableBindings(segmentControl)]];
+    //UIPageViewController.view
+    UIView *pageControllerView = self.pageController.view;
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[pageControllerView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(pageControllerView)]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[segmentControl]-0-[pageControllerView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(segmentControl, pageControllerView)]];
 }
 
--(SecondTableViewController*)secondVC{
-    if (!_secondVC) {
-        _secondVC = [[SecondTableViewController alloc] init];
-        _secondVC.title = @"热点";
-    }
-    return _secondVC;
+#pragma mark - init
+-(void)initSegmentControl{
+    _segmentControl.menuDelegate = self;
+    _segmentControl.menuDataSource = self;
+    _segmentControl.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:_segmentControl];
 }
--(ThreeTableViewController*)threeVC{
-    if (!_threeVC) {
-        _threeVC = [[ThreeTableViewController alloc] init];
-        _threeVC.title = @"推荐";
-    }
-    return _threeVC;
-}
-
--(FirstViewController*)firstVC1{
-    if (!_firstVC1) {
-        _firstVC1 = [[FirstViewController alloc] init];
-        _firstVC1.title = @"长春";
-    }
-    return _firstVC1;
+-(void)initPageController{
+    self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
+    self.pageController.delegate = self;
+    self.pageController.dataSource = self;
+    self.pageController.view.backgroundColor = [UIColor redColor];
+    UIViewController *controller = [self.childControllers objectAtIndex:self.curControllerIndex];
+    [self.pageController setViewControllers:@[controller] direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
+    self.pageController.view.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:self.pageController.view];
 }
 
--(SecondTableViewController*)secondVC1{
-    if (!_secondVC1) {
-        _secondVC1 = [[SecondTableViewController alloc] init];
-        _secondVC1.title = @"军事";
-    }
-    return _secondVC1;
-}
--(ThreeTableViewController*)threeVC1{
-    if (!_threeVC1) {
-        _threeVC1 = [[ThreeTableViewController alloc] init];
-        _threeVC1.title = @"政治";
-    }
-    return _threeVC1;
+#pragma mark - SliderTabMenuViewDataSource
+-(NSInteger)numberOfTitleInSegmentControl{
+    return self.childControllers.count;
 }
 
--(FirstViewController*)firstVC2{
-    if (!_firstVC2) {
-        _firstVC2 = [[FirstViewController alloc] init];
-        _firstVC2.title = @"亚运会";
-    }
-    return _firstVC2;
+-(NSString*)segmentControl:(SegmentControl *)view titleForIndex:(NSInteger)index{
+    UIViewController *controller = [self.childControllers objectAtIndex:index];
+    return controller.title;
 }
 
--(SecondTableViewController*)secondVC2{
-    if (!_secondVC2) {
-        _secondVC2 = [[SecondTableViewController alloc] init];
-        _secondVC2.title = @"视频";
+#pragma mark - SliderTabMenuViewDelegate
+-(void)segmentControl:(SegmentControl *)view didSelectedForIndex:(NSInteger)index{
+    UIPageViewControllerNavigationDirection direction;
+    if (index > self.curControllerIndex) {
+        direction = UIPageViewControllerNavigationDirectionForward;
+    }else{
+        direction = UIPageViewControllerNavigationDirectionReverse;
     }
-    return _secondVC2;
+    UIViewController *selectedVC = [self.childControllers objectAtIndex:index];
+    [self.pageController setViewControllers:@[selectedVC] direction:direction animated:YES completion:nil];
+    self.curControllerIndex = index;
 }
--(ThreeTableViewController*)threeVC2{
-    if (!_threeVC2) {
-        _threeVC2 = [[ThreeTableViewController alloc] init];
-        _threeVC2.title = @"娱乐";
+
+#pragma mark - UIPageViewControllerDataSource
+- (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController{
+    NSInteger index = [self.childControllers indexOfObject:viewController];
+    if (index == NSNotFound || index == 0) {
+        return nil;
     }
-    return _threeVC2;
+    NSInteger beforeIndex = index - 1;
+    
+    return [self.childControllers objectAtIndex:beforeIndex];
+}
+
+- (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController{
+    NSInteger index = [self.childControllers indexOfObject:viewController];
+    if (index == NSNotFound) {
+        return nil;
+    }
+    if (index + 1 >= self.childControllers.count) return nil;
+    index = index + 1;
+    return [self.childControllers objectAtIndex:index];
+}
+
+-(void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed{
+    if (completed) {
+        self.curControllerIndex = [self.childControllers indexOfObject:pageViewController.viewControllers.lastObject];
+        [self.segmentControl moveToIndex:self.curControllerIndex];
+    }
 }
 @end

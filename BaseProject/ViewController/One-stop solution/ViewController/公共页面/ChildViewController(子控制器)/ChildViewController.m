@@ -28,10 +28,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.controllers = @[self.firstVC, self.secondVC, self.threeVC];
-    self.segmentControl = [[SegmentControl alloc] initWithFrame:CGRectMake(0, 88, kScreenWidth, 45.f) menuStyle:SegmentControlStylePlain defaultIndex:0];
-    self.segmentControl.menuDataSource = self;
-    self.segmentControl.menuDelegate = self;
-    [self.view addSubview:self.segmentControl];
+//    self.segmentControl = [[SegmentControl alloc] initWithFrame:CGRectMake(0, 88, kScreenWidth, 45.f) menuStyle:SegmentControlStylePlain defaultIndex:0];
+//    self.segmentControl.menuDataSource = self;
+//    self.segmentControl.menuDelegate = self;
+//    [self.view addSubview:self.segmentControl];
     
     CGRect rect = CGRectMake(0, self.segmentControl.lc_b, kScreenWidth, kScreenHeight - self.segmentControl.lc_b);
     self.firstVC.view.frame = rect;

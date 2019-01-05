@@ -75,9 +75,23 @@ static NSString *CellIdentifier = @"Cell";
         controller.title = title;
         [self.navigationController pushViewController:controller animated:YES];
     }else if([title isEqualToString:@"容器"]){
-        ContainerViewController*controller = [[ContainerViewController alloc] init];
-        controller.title = title;
-        [self.navigationController pushViewController:controller animated:YES];
+        UIViewController *ctrl1 = [[NSClassFromString(@"FirstViewController") alloc] init];
+        ctrl1.title = @"关注";
+        UIViewController * ctrl2 = [[NSClassFromString(@"FirstViewController") alloc] init];
+        ctrl2.title = @"精选";
+        UIViewController * ctrl3 = [[NSClassFromString(@"FirstViewController") alloc] init];
+        ctrl3.title = @"军事";
+        UIViewController *ctrl4 = [[NSClassFromString(@"FirstViewController") alloc] init];
+        ctrl4.title = @"体育";
+        UIViewController * ctrl5 = [[NSClassFromString(@"FirstViewController") alloc] init];
+        ctrl5.title = @"长春";
+        UIViewController * ctrl6 = [[NSClassFromString(@"FirstViewController") alloc] init];
+        ctrl6.title = @"财经";
+        ContainerViewController *container = [ContainerViewController containerWithControllers:@[ctrl1, ctrl2, ctrl3, ctrl4, ctrl5, ctrl6] defalutControllerIndex:1];
+        container.segmentControl.style = SegmentControlSliderWidthStyleTextWidth;
+        container.segmentControl.sliderWidthStyle = SegmentControlSliderWidthStyleFullTextWidth;
+        container.title = title;
+        [self.navigationController pushViewController:container animated:YES];
     }else if([title isEqualToString:@"子控制器"]){
         ChildViewController*controller = [[ChildViewController alloc] init];
         controller.title = title;

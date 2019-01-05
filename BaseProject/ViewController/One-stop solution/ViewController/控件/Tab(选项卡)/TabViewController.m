@@ -25,9 +25,9 @@
     [super viewDidLoad];
     self.titles1 = @[@"代付款", @"待发货", @"待收货"];
     self.titles3 = @[@"关注", @"长春", @"热点", @"小说", @"视频", @"军事", @"头条号", @"科技", @"财经",@"国际"];
-    self.semgentControl = [[SegmentControl alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, 45.f) menuStyle:SegmentControlStylePlain defaultIndex:1];
-    self.semgentControl.menuDelegate = self;
-    self.semgentControl.menuDataSource = self;
+//    self.semgentControl = [[SegmentControl alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, 45.f) menuStyle:SegmentControlStylePlain defaultIndex:1];
+//    self.semgentControl.menuDelegate = self;
+//    self.semgentControl.menuDataSource = self;
     [self.view addSubview:self.semgentControl];
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"换位置" style:UIBarButtonItemStylePlain target:self action:@selector(pressRightItem:)];
     self.navigationItem.rightBarButtonItem = rightItem;

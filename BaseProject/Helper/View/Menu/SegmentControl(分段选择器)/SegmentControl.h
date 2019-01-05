@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MenuItem.h"
 
 @class SegmentControl;
 
@@ -17,8 +16,8 @@ typedef NS_ENUM(NSInteger, SegmentControlSliderWidthStyle){
 };
 
 typedef NS_ENUM(NSInteger, SegmentControlStyle){
-    SegmentControlStylePlain = 0,//内容大小的宽度
-    SegmentControlStyleEqual//平分宽度
+    SegmentControlStylePlain = 0,//选项卡宽度等于内容大小的宽度
+    SegmentControlStyleEqual//选项卡的宽度平分父控件的宽度
 };//分段控制器的菜单样式
 
 @protocol SegmentControlDataSource<NSObject>
@@ -42,13 +41,13 @@ typedef NS_ENUM(NSInteger, SegmentControlStyle){
 @property(nonatomic, strong) UIColor* textColor;
 @property(nonatomic, strong) UIColor* selectedTextColor;
 @property(nonatomic, strong) UIColor* slidewayColor;
-@property(nonatomic, assign) IBInspectable NSInteger style;//0是平滑 1是均分
-@property(nonatomic, assign) NSInteger curIndex;
+@property(nonatomic, assign) SegmentControlStyle style;//选项卡的宽度
+@property(nonatomic, assign) NSInteger curIndex;//当前选中的选项卡角标
 @property(nonatomic, weak) id<SegmentControlDelegate> menuDelegate;
 @property(nonatomic, weak) id<SegmentControlDataSource> menuDataSource;
-@property(nonatomic, assign) SegmentControlSliderWidthStyle sliderWidthStyle;
+@property(nonatomic, assign) SegmentControlSliderWidthStyle sliderWidthStyle;//滑块的宽度
 
--(instancetype)initWithFrame:(CGRect)frame menuStyle:(SegmentControlStyle)style defaultIndex:(NSInteger) index;
+-(instancetype)initWithStyle:(SegmentControlStyle)style defaultIndex:(NSInteger) index;
 
 -(void)moveToIndex:(NSInteger)index;
 @end

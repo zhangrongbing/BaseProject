@@ -17,7 +17,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor yellowColor];
+    self.view.backgroundColor = [UIColor whiteColor];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, kScreenWidth, 300)];
+    label.text = self.title;
+    label.textColor = [UIColor redColor];
+    label.font = [UIFont systemFontOfSize:25.f];
+    label.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:label];
+    DebugLog(@"title = %@",self.title);
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    DebugLog(@"");
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     DebugLog(@"");
 }
 
@@ -25,4 +41,8 @@
     [super didReceiveMemoryWarning];
 }
 
+-(void)viewWillLayoutSubviews{
+    [super viewWillLayoutSubviews];
+    DebugLog(@"");
+}
 @end

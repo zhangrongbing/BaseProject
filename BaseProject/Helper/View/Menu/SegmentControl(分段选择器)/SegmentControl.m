@@ -7,8 +7,6 @@
 //
 
 #import "SegmentControl.h"
-#import "Masonry.h"
-#import "UIView+Addition.h"
 
 #define kSpacing 30.f//间隔
 
@@ -23,30 +21,26 @@
 
 @implementation SegmentControl
 
-
--(instancetype)initWithFrame:(CGRect)frame menuStyle:(SegmentControlStyle)style defaultIndex:(NSInteger) index{
-    if (self = [self initWithFrame:frame]) {
+-(instancetype)initWithStyle:(SegmentControlStyle)style defaultIndex:(NSInteger) index{
+    if (self = [super init]) {
         self.style = style;
         self.curIndex = index;
         self.sliderWidthStyle = SegmentControlSliderWidthStyleTextWidth;
+        self.selectedTextColor = [UIColor blackColor];
+        self.textColor = [UIColor blackColor];
+        self.sliderColor = [UIColor blackColor];
+        self.showsVerticalScrollIndicator = NO;
+        self.showsHorizontalScrollIndicator = NO;
+        self.backgroundColor = [UIColor whiteColor];
     }
     return self;
 }
 
 #pragma mark - OverWrite
 
--(instancetype)initWithCoder:(NSCoder *)aDecoder{
-    if (self = [super initWithCoder:aDecoder]) {
-        [self setupUI];
-    }
-    return self;
-}
-
--(instancetype)initWithFrame:(CGRect)frame{
-    if (self = [super initWithFrame: frame]) {
-        [self setupUI];
-    }
-    return self;
+-(void)willMoveToSuperview:(UIView *)newSuperview{
+    [super willMoveToSuperview:newSuperview];
+    
 }
 
 -(void)layoutSubviews{
@@ -77,12 +71,17 @@
         self.contentSize = CGSizeMake(contentWidth, size.height);
     }
     self.slidewayView.frame = CGRectMake(0, size.height - 1, size.width, 1);
-    self.sliderView.frame = CGRectMake(CGRectGetMinX(self.curButton.frame), 0, CGRectGetWidth(self.curButton.frame), 1);
+    if (self.sliderWidthStyle == SegmentControlSliderWidthStyleTextWidth) {
+        UIButton *curBtn = [self.buttons objectAtIndex:self.curIndex];
+        CGRect newFrame = [curBtn.titleLabel convertRect:curBtn.titleLabel.bounds toView:curBtn.superview];
+        self.sliderView.frame = CGRectMake(CGRectGetMinX(newFrame), 0, CGRectGetWidth(newFrame), 1);
+    }else if(self.sliderWidthStyle == SegmentControlSliderWidthStyleFullTextWidth){
+        self.sliderView.frame = CGRectMake(CGRectGetMinX(self.curButton.frame), 0, CGRectGetWidth(self.curButton.frame), 1);
+    }
 }
-
 #pragma mark - Getter and Setter
 
--(void)setStyle:(NSInteger)style{
+-(void)setStyle:(SegmentControlStyle)style{
     _style = style;
     if (style == SegmentControlStyleEqual) {
         self.scrollEnabled = NO;
@@ -90,6 +89,19 @@
         self.scrollEnabled = YES;
         self.slidewayView.backgroundColor = [UIColor clearColor];
     }
+}
+
+-(void)setMenuDelegate:(id<SegmentControlDelegate>)menuDelegate{
+    _menuDelegate = menuDelegate;
+    
+    //加入轨道
+    self.slidewayView = [[UIView alloc] init];
+    self.slidewayView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    [self addSubview:self.slidewayView];
+    //加入滑块
+    self.sliderView = [[UIView alloc] init];
+    self.sliderView.backgroundColor = self.sliderColor;
+    [self.slidewayView addSubview:self.sliderView];
 }
 
 -(void)setMenuDataSource:(id<SegmentControlDataSource>)menuDataSource{
@@ -102,8 +114,8 @@
         NSString *title = [self.menuDataSource segmentControl:self titleForIndex:i];
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [btn setTitle:title forState:UIControlStateNormal];
-        [btn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
+        [btn setTitleColor:self.textColor forState:UIControlStateNormal];
+        [btn setTitleColor:self.selectedTextColor forState:UIControlStateSelected];
         [btn addTarget:self action:@selector(pressButton:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:btn];
         [self.buttons addObject:btn];
@@ -122,23 +134,6 @@
 }
 
 #pragma mark - Public
-
--(void)setupUI{
-    self.showsVerticalScrollIndicator = NO;
-    self.showsHorizontalScrollIndicator = NO;
-    self.style = SegmentControlStyleEqual;
-    self.sliderWidthStyle = SegmentControlSliderWidthStyleTextWidth;
-    self.backgroundColor = [UIColor whiteColor];
-    
-    //加入轨道
-    self.slidewayView = [[UIView alloc] init];
-    self.slidewayView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    [self addSubview:self.slidewayView];
-    //加入滑块
-    self.sliderView = [[UIView alloc] init];
-    self.sliderView.backgroundColor = [UIColor blackColor];
-    [self.slidewayView addSubview:self.sliderView];
-}
 
 -(void)moveToIndex:(NSInteger)index{
     UIButton *button = [self.buttons objectAtIndex:index];
@@ -164,8 +159,18 @@
     self.userInteractionEnabled = NO;
     //控制滑块
     [UIView animateWithDuration:.3 animations:^{
-        self.sliderView.lc_x = CGRectGetMinX(self.curButton.frame);
-        self.sliderView.lc_w = CGRectGetWidth(self.curButton.frame);
+        if (self.sliderWidthStyle == SegmentControlSliderWidthStyleTextWidth) {
+            CGRect titleLabelFrame = [self.curButton.titleLabel convertRect:self.curButton.titleLabel.bounds toView:self];
+            CGFloat sliderViewX = CGRectGetMinX(titleLabelFrame);
+            CGRect newFrame = self.sliderView.frame;
+            newFrame.origin.x = sliderViewX;
+            self.sliderView.frame = newFrame;
+        }else if(self.sliderWidthStyle == SegmentControlSliderWidthStyleFullTextWidth){
+            CGRect newFrame = self.sliderView.frame;
+            newFrame.origin.x = CGRectGetMinX(self.curButton.frame);
+            newFrame.size.width = CGRectGetWidth(self.curButton.frame);
+            self.sliderView.frame = newFrame;
+        }
     } completion:^(BOOL finished) {
         self.userInteractionEnabled = YES;
     }];

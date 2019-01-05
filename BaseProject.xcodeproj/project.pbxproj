@@ -121,7 +121,6 @@
 		58B0BA19214756AA00A0852D /* SegmentCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B0BA17214756AA00A0852D /* SegmentCodeViewController.m */; };
 		58B0BA1A214756AA00A0852D /* SegmentCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58B0BA18214756AA00A0852D /* SegmentCodeViewController.xib */; };
 		58B51D152117E3FD00281806 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B51D142117E3FD00281806 /* ContainerViewController.m */; };
-		58B51D1A2117E49700281806 /* ContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B51D192117E49700281806 /* ContainerView.m */; };
 		58B7464221113FB3000BCD6D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B7464121113FB3000BCD6D /* ViewController.m */; };
 		58B7464821115E6F000BCD6D /* PopupMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B7464721115E6F000BCD6D /* PopupMenuTableViewController.m */; };
 		58B7464E21119D82000BCD6D /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B7464D21119D82000BCD6D /* TableViewController.m */; };
@@ -464,8 +463,6 @@
 		58B0BA18214756AA00A0852D /* SegmentCodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SegmentCodeViewController.xib; sourceTree = "<group>"; };
 		58B51D132117E3FD00281806 /* ContainerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
 		58B51D142117E3FD00281806 /* ContainerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
-		58B51D182117E49700281806 /* ContainerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContainerView.h; sourceTree = "<group>"; };
-		58B51D192117E49700281806 /* ContainerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContainerView.m; sourceTree = "<group>"; };
 		58B7464021113FB3000BCD6D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		58B7464121113FB3000BCD6D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		58B7464621115E6F000BCD6D /* PopupMenuTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopupMenuTableViewController.h; sourceTree = "<group>"; };
@@ -1476,8 +1473,6 @@
 		58B51D172117E47D00281806 /* Container(容器) */ = {
 			isa = PBXGroup;
 			children = (
-				58B51D182117E49700281806 /* ContainerView.h */,
-				58B51D192117E49700281806 /* ContainerView.m */,
 			);
 			path = "Container(容器)";
 			sourceTree = "<group>";
@@ -2414,7 +2409,7 @@
 						CreatedOnToolsVersion = 9.4.1;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.Push = {
 								enabled = 1;
@@ -2631,7 +2626,6 @@
 				5861F41021BA237F00B041CF /* ScallableImagesCell.m in Sources */,
 				58FAD20D2146207C009CCA65 /* BottomExpansionViewController.m in Sources */,
 				58CA96272112AB7C0032D145 /* SettingsTableViewController.m in Sources */,
-				58B51D1A2117E49700281806 /* ContainerView.m in Sources */,
 				58E2DB6120DA01EF00006895 /* AppDelegate+RemoteNotification.m in Sources */,
 				582794F921351F6700C4E780 /* WeatherCityOperation.m in Sources */,
 				58D865C9215F7CD1002FE502 /* ColorLineViewController.m in Sources */,
