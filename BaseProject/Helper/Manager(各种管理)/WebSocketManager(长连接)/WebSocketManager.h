@@ -24,7 +24,7 @@
 
 @property(nonatomic, weak) id<WebSocketManagerDelegate> delegate;
 
-LC_SINGLE_H(WebSocketManager);
+SINGLE_H(WebSocketManager);
 
 //建立长连接
 - (void)close;

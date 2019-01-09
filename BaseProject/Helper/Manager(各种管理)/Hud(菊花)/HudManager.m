@@ -15,7 +15,7 @@
 @end
 
 @implementation HudManager
-LC_SINGLE_M(HudManager);
+SINGLE_M(HudManager);
 
 -(instancetype)init{
     if (self = [super init]) {

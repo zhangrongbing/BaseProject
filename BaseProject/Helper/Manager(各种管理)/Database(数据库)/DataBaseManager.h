@@ -11,7 +11,7 @@
 
 @interface DataBaseManager : NSObject
 
-LC_SINGLE_H(DataBaseManager);
+SINGLE_H(DataBaseManager);
 
 //插入历史记录相关
 -(void)insertHistoryKeywords:(NSString*)keywords;

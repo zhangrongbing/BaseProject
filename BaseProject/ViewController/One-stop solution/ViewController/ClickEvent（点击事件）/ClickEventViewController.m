@@ -10,7 +10,6 @@
 #import "Masonry.h"
 #import "UIView+Block.h"
 #import "UIButton+EnlargeTouchArea.h"
-#import "MusicManager.h"
 
 @interface ClickEventViewController ()
 

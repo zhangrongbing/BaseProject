@@ -432,3 +432,18 @@ alpha:1]
     }];
 }
 @end
+
+@implementation EvaluateController
+
++(void)showController{
+    DialogAction *spitAction = [DialogAction actionWithTitle:@"我要吐槽" handler:^(DialogAction * _Nonnull action) {
+        
+    }];
+    DialogAction *rejectAction = [DialogAction actionWithTitle:@"残忍拒绝" handler:nil];
+    DialogAction *goodAction = [DialogAction actionWithTitle:@"五星好评" handler:^(DialogAction * _Nonnull action) {
+        
+    }];
+    
+}
+
+@end

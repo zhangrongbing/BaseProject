@@ -37,8 +37,6 @@
 		0AF68AE42189874A00A5FCA0 /* intro_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0AF68AE02189874A00A5FCA0 /* intro_2.jpg */; };
 		0AF68AE52189874A00A5FCA0 /* intro_0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0AF68AE12189874A00A5FCA0 /* intro_0.jpg */; };
 		5803F19F218047C60057617F /* 321.caf in Resources */ = {isa = PBXBuildFile; fileRef = 5803F19E218047C50057617F /* 321.caf */; };
-		5803F1A3218055710057617F /* MusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5803F1A2218055710057617F /* MusicViewController.m */; };
-		5803F1A72180559A0057617F /* MusicManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5803F1A62180559A0057617F /* MusicManager.m */; };
 		580DC01121B79E9700DEDA40 /* ScrollableDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580DC01021B79E9700DEDA40 /* ScrollableDetailController.m */; };
 		580FEBBE211C447E00EBE52E /* PopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580FEBBD211C447E00EBE52E /* PopoverViewController.m */; };
 		580FEBC1211C461F00EBE52E /* PopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580FEBC0211C461F00EBE52E /* PopViewController.m */; };
@@ -139,6 +137,7 @@
 		58CA96332112DD040032D145 /* SubTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58CA96312112DD040032D145 /* SubTitleTableViewCell.xib */; };
 		58CA96362112DE850032D145 /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CA96352112DE850032D145 /* FileManager.m */; };
 		58CD3AFD21E5C42300766606 /* UIColor+Preference.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CD3AFC21E5C42300766606 /* UIColor+Preference.m */; };
+		58CD3B0221E5DDA900766606 /* PushManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CD3B0121E5DDA900766606 /* PushManager.m */; };
 		58CD6786212EB5000046214C /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CD6785212EB5000046214C /* SearchViewController.m */; };
 		58CFA8E52113D8A800B62D80 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CFA8E32113D8A800B62D80 /* LoginViewController.m */; };
 		58CFA8E62113D8A800B62D80 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58CFA8E42113D8A800B62D80 /* LoginViewController.xib */; };
@@ -309,10 +308,6 @@
 		0AF68AE02189874A00A5FCA0 /* intro_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = intro_2.jpg; sourceTree = "<group>"; };
 		0AF68AE12189874A00A5FCA0 /* intro_0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = intro_0.jpg; sourceTree = "<group>"; };
 		5803F19E218047C50057617F /* 321.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 321.caf; sourceTree = "<group>"; };
-		5803F1A1218055710057617F /* MusicViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MusicViewController.h; sourceTree = "<group>"; };
-		5803F1A2218055710057617F /* MusicViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MusicViewController.m; sourceTree = "<group>"; };
-		5803F1A52180559A0057617F /* MusicManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MusicManager.h; sourceTree = "<group>"; };
-		5803F1A62180559A0057617F /* MusicManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MusicManager.m; sourceTree = "<group>"; };
 		580DC00F21B79E9700DEDA40 /* ScrollableDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrollableDetailController.h; sourceTree = "<group>"; };
 		580DC01021B79E9700DEDA40 /* ScrollableDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrollableDetailController.m; sourceTree = "<group>"; };
 		580FEBBC211C447E00EBE52E /* PopoverViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopoverViewController.h; sourceTree = "<group>"; };
@@ -497,6 +492,8 @@
 		58CC8C99217421AD00E01F26 /* BaseProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaseProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58CD3AFB21E5C42300766606 /* UIColor+Preference.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Preference.h"; sourceTree = "<group>"; };
 		58CD3AFC21E5C42300766606 /* UIColor+Preference.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Preference.m"; sourceTree = "<group>"; };
+		58CD3B0021E5DDA900766606 /* PushManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PushManager.h; sourceTree = "<group>"; };
+		58CD3B0121E5DDA900766606 /* PushManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PushManager.m; sourceTree = "<group>"; };
 		58CD6784212EB5000046214C /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		58CD6785212EB5000046214C /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		58CFA8E22113D8A800B62D80 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -828,24 +825,6 @@
 				BC11FE5F171B2985AD22FC93 /* Pods-BaseProject.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		5803F1A02180526A0057617F /* Music(音乐播放器) */ = {
-			isa = PBXGroup;
-			children = (
-				5803F1A1218055710057617F /* MusicViewController.h */,
-				5803F1A2218055710057617F /* MusicViewController.m */,
-			);
-			path = "Music(音乐播放器)";
-			sourceTree = "<group>";
-		};
-		5803F1A4218055810057617F /* MusicManager */ = {
-			isa = PBXGroup;
-			children = (
-				5803F1A52180559A0057617F /* MusicManager.h */,
-				5803F1A62180559A0057617F /* MusicManager.m */,
-			);
-			path = MusicManager;
 			sourceTree = "<group>";
 		};
 		580DC01221B7A11800DEDA40 /* Cell */ = {
@@ -1226,7 +1205,6 @@
 		584D57AB21C9D720001436D4 /* 流媒体 */ = {
 			isa = PBXGroup;
 			children = (
-				5803F1A02180526A0057617F /* Music(音乐播放器) */,
 				58A2D3A8218025F600491F7F /* Sound(音效) */,
 				58A2D3AC2180362F00491F7F /* SteamingMediaController.h */,
 				58A2D3AD2180362F00491F7F /* SteamingMediaController.m */,
@@ -1582,6 +1560,15 @@
 				58CD3AFC21E5C42300766606 /* UIColor+Preference.m */,
 			);
 			path = Preference;
+			sourceTree = "<group>";
+		};
+		58CD3AFF21E5DD5200766606 /* PushManager(推送管理) */ = {
+			isa = PBXGroup;
+			children = (
+				58CD3B0021E5DDA900766606 /* PushManager.h */,
+				58CD3B0121E5DDA900766606 /* PushManager.m */,
+			);
+			path = "PushManager(推送管理)";
 			sourceTree = "<group>";
 		};
 		58CD6783212EB4DF0046214C /* PseudoSearch(伪搜索) */ = {
@@ -2151,7 +2138,7 @@
 		58E2DB0720DA01E000006895 /* Manager(各种管理) */ = {
 			isa = PBXGroup;
 			children = (
-				5803F1A4218055810057617F /* MusicManager */,
+				58CD3AFF21E5DD5200766606 /* PushManager(推送管理) */,
 				5810D68B2171A3E90082E2DD /* IPManager(IP地址管理) */,
 				5810D68A2171A3C10082E2DD /* FileManager(文件管理) */,
 				582A1DB82133E5A400B50D7D /* SocketManager(Socket通信) */,
@@ -2542,7 +2529,6 @@
 				58CA96322112DD040032D145 /* SubTitleTableViewCell.m in Sources */,
 				5846AD76217DA632009079DF /* ShadeView.m in Sources */,
 				58CD6786212EB5000046214C /* SearchViewController.m in Sources */,
-				5803F1A3218055710057617F /* MusicViewController.m in Sources */,
 				5886178921BE38E6001FCF18 /* MoveUpPlaceholderTextField.m in Sources */,
 				582794F321351DBC00C4E780 /* WeatherCityTableViewController.m in Sources */,
 				582A1DC02133EA8300B50D7D /* SocketViewController.m in Sources */,
@@ -2604,6 +2590,7 @@
 				5886177521BDF79B001FCF18 /* LoginListController.m in Sources */,
 				0AF68ADD21897B9600A5FCA0 /* LCIntroductoryPagesView.m in Sources */,
 				58FAD215214663F2009CCA65 /* BottomExpansionView.m in Sources */,
+				58CD3B0221E5DDA900766606 /* PushManager.m in Sources */,
 				58D7E29121217F7200B14383 /* SharedViewController.m in Sources */,
 				0A736CC7218BE97B00050D44 /* ImageZoomViewController.m in Sources */,
 				58B7464E21119D82000BCD6D /* TableViewController.m in Sources */,
@@ -2686,7 +2673,6 @@
 				58F0226E212BAF960092A72D /* ButtonViewController.m in Sources */,
 				5891978120EB264600537612 /* DataPickerViewController.m in Sources */,
 				582794E92135113E00C4E780 /* WeatherProvinceOperation.m in Sources */,
-				5803F1A72180559A0057617F /* MusicManager.m in Sources */,
 				0AF68AC02189570F00A5FCA0 /* YYFPSLabel.m in Sources */,
 				58B0BA19214756AA00A0852D /* SegmentCodeViewController.m in Sources */,
 				58F02269212BAE000092A72D /* UIButton+Badge.m in Sources */,
@@ -2903,7 +2889,7 @@
 				CODE_SIGN_ENTITLEMENTS = BaseProject/BaseProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 6YRG733XN2;
+				DEVELOPMENT_TEAM = V5T4J37QCK;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/$(PRODUCT_NAME)/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -2911,7 +2897,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hanrui.BaseProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.BaseProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2924,7 +2910,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = BaseProject/BaseProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6YRG733XN2;
+				DEVELOPMENT_TEAM = V5T4J37QCK;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/$(PRODUCT_NAME)/Info.plist";
@@ -2933,7 +2919,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hanrui.BaseProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.BaseProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

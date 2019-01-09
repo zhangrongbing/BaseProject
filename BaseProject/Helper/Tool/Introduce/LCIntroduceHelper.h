@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LCIntroduceHelper : NSObject
 
-LC_SINGLE_H(LCIntroduceHelper)
+SINGLE_H(LCIntroduceHelper)
 
 + (void)showIntroductoryPage:(NSArray<NSString *> *)imageAry;
 

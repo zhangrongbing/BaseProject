@@ -17,7 +17,7 @@
 
 @implementation SocketManager
 
-LC_SINGLE_M(SocketManager);
+SINGLE_M(SocketManager);
 
 -(void)connectToHost:(NSString *)host onPort:(NSString*)port{    
     self.socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];

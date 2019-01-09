@@ -13,7 +13,7 @@
 
 @implementation MyConfig
 
-LC_SINGLE_M(MyConfig);
+SINGLE_M(MyConfig);
 
 -(instancetype)init{
     if (self = [super init]) {

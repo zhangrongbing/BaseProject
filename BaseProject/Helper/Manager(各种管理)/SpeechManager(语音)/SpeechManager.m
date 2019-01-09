@@ -8,6 +8,10 @@
 
 #import "SpeechManager.h"
 
+#ifdef __IPHONE_11_3
+#import <StoreKit/StoreKit.h>
+#endif
+
 @interface SpeechManager () <AVSpeechSynthesizerDelegate>
 
 @property (nonatomic, strong, readwrite) AVSpeechSynthesizer *speechSynthesizer;
@@ -16,7 +20,7 @@
 
 @implementation SpeechManager
 
-LC_SINGLE_M(SpeechManager);
+SINGLE_M(SpeechManager);
 
 - (instancetype)init
 {

@@ -26,7 +26,7 @@ typedef void(^reConnectblock)(void);
 
 @implementation WebSocketManager
 
-LC_SINGLE_M(WebSocketManager);
+SINGLE_M(WebSocketManager);
 
 -(instancetype)init{
     if (self = [super init]) {

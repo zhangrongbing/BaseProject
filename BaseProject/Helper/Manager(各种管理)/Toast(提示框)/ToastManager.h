@@ -11,7 +11,7 @@
 
 @interface ToastManager : NSObject
 
-LC_SINGLE_H(ToastManager);
+SINGLE_H(ToastManager);
 
 -(void)showMessage:(NSString*)message, ...NS_FORMAT_FUNCTION(1,2);
 -(void)showMessage:(NSString*)message delay:(float)delay;

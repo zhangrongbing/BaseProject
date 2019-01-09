@@ -21,7 +21,7 @@
 
 @implementation IPManager
 
-LC_SINGLE_M(IPManager);
+SINGLE_M(IPManager);
 
 - (NSString *)localIP
 {

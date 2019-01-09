@@ -16,7 +16,7 @@
  */
 @interface SpeechManager : NSObject
 
-LC_SINGLE_H(SpeechManager);
+SINGLE_H(SpeechManager);
 
 - (BOOL)isSpeaking;
 

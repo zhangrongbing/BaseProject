@@ -32,6 +32,14 @@
     [self.navigationBar setBarTintColor:RGB(0x297FCA)];
     [self.navigationBar setTintColor:[UIColor whiteColor]];
 }
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }

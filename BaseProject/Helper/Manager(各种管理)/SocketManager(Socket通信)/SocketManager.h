@@ -28,7 +28,7 @@ typedef NS_ENUM(NSInteger, SocketManagerFailedCode){
 
 @interface SocketManager : NSObject
 
-LC_SINGLE_H(SocketManager);
+SINGLE_H(SocketManager);
 
 @property(nonatomic, strong) id<SocketManagerDelegate> delegate;
 

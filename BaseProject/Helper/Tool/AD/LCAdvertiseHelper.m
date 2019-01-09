@@ -12,7 +12,7 @@ static NSString *const adImageName = @"adImageName";
 
 @implementation LCAdvertiseHelper
 
-LC_SINGLE_M(LCAdvertiseHelper)
+SINGLE_M(LCAdvertiseHelper)
 
 - (instancetype)init{
     self = [super init];

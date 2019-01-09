@@ -19,7 +19,7 @@
 
 @implementation LCIntroduceHelper
 
-LC_SINGLE_M(LCIntroduceHelper);
+SINGLE_M(LCIntroduceHelper);
 
 #define kScreenWidth UIScreen.mainScreen.bounds.size.width
 #define kScreenHeight UIScreen.mainScreen.bounds.size.height

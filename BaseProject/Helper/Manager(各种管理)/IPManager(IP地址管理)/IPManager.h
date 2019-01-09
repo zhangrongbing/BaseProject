@@ -12,7 +12,7 @@
 
 @interface IPManager : NSObject
 
-LC_SINGLE_H(IPManager);
+SINGLE_H(IPManager);
 
 - (NSString *)localIP;//本地ip
 

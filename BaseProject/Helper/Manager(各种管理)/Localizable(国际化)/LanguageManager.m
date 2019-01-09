@@ -17,7 +17,7 @@
 
 @implementation LanguageManager
 
-LC_SINGLE_M(LanguageManager);
+SINGLE_M(LanguageManager);
 
 -(instancetype)init{
     if (self = [super init]) {

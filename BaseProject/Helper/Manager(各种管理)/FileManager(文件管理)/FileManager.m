@@ -10,7 +10,7 @@
 
 @implementation FileManager
 
-LC_SINGLE_M(FileManager);
+SINGLE_M(FileManager);
 
 -(instancetype)init{
     if (self = [super init]) {

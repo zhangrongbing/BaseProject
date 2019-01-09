@@ -16,7 +16,7 @@ static NSString* TokenKey = @"Token";
 
 @interface MyConfig : NSObject
 
-LC_SINGLE_H(MyConfig);
+SINGLE_H(MyConfig);
 
 @property(nonatomic, readonly) BOOL isLogin;//是否已经登录
 

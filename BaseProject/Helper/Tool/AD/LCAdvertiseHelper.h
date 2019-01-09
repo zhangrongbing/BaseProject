@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LCAdvertiseHelper : NSObject
 
-LC_SINGLE_H(LCAdvertiseHelper)
+SINGLE_H(LCAdvertiseHelper)
 
 + (void)showAdvertiserView:(NSArray<NSString *> *)imageArray;
 

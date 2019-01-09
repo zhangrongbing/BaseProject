@@ -11,7 +11,7 @@
 
 @interface FileManager : NSObject
 
-LC_SINGLE_H(FileManager);
+SINGLE_H(FileManager);
 
 - (long long) fileSizeAtPath:(NSString*) filePath;//单个文件大小
 - (float ) folderSizeAtPath:(NSString*) folderPath;//文件夹大小

@@ -17,7 +17,7 @@
 
 @implementation ToastManager
 
-LC_SINGLE_M(ToastManager);
+SINGLE_M(ToastManager);
 
 
 

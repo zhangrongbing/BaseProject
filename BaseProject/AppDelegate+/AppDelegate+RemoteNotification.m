@@ -9,6 +9,7 @@
 #import "AppDelegate+RemoteNotification.h"
 #import "AFNetworkReachabilityManager.h"
 #import <CloudPushSDK/CloudPushSDK.h>
+#import "PushManager.h"
 
 #define kAppKey @"25236293"
 #define kAppSecret @"ec5b26e5e5d15fb1ac15ddf9517fa1ea"
@@ -16,21 +17,25 @@
 @implementation AppDelegate (RemoteNotification)
 
 - (void)registerAPNS:(UIApplication *)application {
-    
+
+#ifdef __IPHONE_8_0
     if (@available(iOS 10, *)) {
         UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
         center.delegate = self;
         UNAuthorizationOptions options = UNAuthorizationOptionBadge|UNAuthorizationOptionSound | UNAuthorizationOptionAlert;
-        
         [center requestAuthorizationWithOptions:options completionHandler:^(BOOL granted, NSError * _Nullable error) {
             DebugLog(@"granted = %@ error = %@", granted?@"yes":@"no", error);
         }];
         [application registerForRemoteNotifications];
-    }else{
+    }else if(@available(iOS 8, *)){
         [application registerUserNotificationSettings: [UIUserNotificationSettings settingsForTypes: (UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
         [application registerForRemoteNotifications];
         DebugLog(@"");
     }
+#else
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound)];
+    DebugLog(@"");
+#endif
 }
 
 //官网返回的DeviceToken
@@ -44,17 +49,26 @@
     DebugLog(@"离线通知注册失败:ERROR= %@", error);
 }
 
+#ifdef __IPHONE_10_0
 //收到离线通知
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
+    [[PushManager sharedInstance] didReceivePushData:userInfo];
     DebugLog(@"收到了离线通知");
 }
+#else
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
+    [[PushManager sharedInstance] didReceivePushData:userInfo];
+    DebugLog(@"收到了离线通知");
+}
+#endif
 
 //收到本地通知
-- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
-    DebugLog(@"收到了本地通知");
-}
+//- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
+//    DebugLog(@"收到了本地通知");
+//}
 
 #pragma mark - UNUserNotificationCenterDelegate ios 10.0, *
+#ifdef __IPHONE_10_0
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler API_AVAILABLE(ios(10.0)){//将要展示
     DebugLog(@"收到了通知");
     completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound);
@@ -64,6 +78,7 @@
     DebugLog(@"收到了通知");
     completionHandler();
 }
+#endif
 
 #pragma mark - Public
 //发送本地通知

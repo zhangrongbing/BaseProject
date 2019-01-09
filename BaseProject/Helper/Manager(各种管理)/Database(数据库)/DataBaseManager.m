@@ -18,7 +18,7 @@
 
 @implementation DataBaseManager
 
-LC_SINGLE_M(DataBaseManager);
+SINGLE_M(DataBaseManager);
 
 -(instancetype)init{
     if (self = [super init]) {

@@ -12,7 +12,7 @@
 
 @interface HudManager : NSObject
 
-LC_SINGLE_H(HudManager);
+SINGLE_H(HudManager);
 
 -(void)showHud:(BOOL)animated;
 -(void)hide:(BOOL)animated;

@@ -21,7 +21,7 @@
 
 @interface LanguageManager : NSObject
 
-LC_SINGLE_H(LanguageManager);
+SINGLE_H(LanguageManager);
 
 @property(nonatomic, strong) NSString *language;//当前语言
 
