@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "MyConfig.h"
 #import "NSDate+Addition.h"
 
 @interface NSObject (Addition)

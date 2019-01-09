@@ -16,6 +16,7 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "SettingNotificationViewController.h"
+#import "MyConfig.h"
 
 @interface SettingsTableViewController ()
 

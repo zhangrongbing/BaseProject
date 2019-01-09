@@ -7,13 +7,21 @@
 //
 
 #import "PopoverViewController.h"
-#import "MenuItem.h"
 
+@class PopAction;
 @interface PopViewController : PopoverViewController
 
++(instancetype)controllerWithSourceView:(UIView*)sourceView actions:(NSArray<PopAction*>*)actions handler:(void(^)(NSInteger index)) handler;
 
-+(instancetype)controllerWithSourceView:(UIView*)sourceView data:(NSArray<MenuItem*>*)items handler:(void(^)(NSInteger index)) handler;
++(instancetype)controllerWithBarButtonItem:(UIBarButtonItem*)barItem actions:(NSArray<PopAction*>*)actions handler:(void(^)(NSInteger index)) handler;
 
-+(instancetype)controllerWithBarButtonItem:(UIBarButtonItem*)barItem data:(NSArray<MenuItem*>*)items handler:(void(^)(NSInteger index)) handler;
+@end
+
+@interface PopAction : NSObject
+
+@property(nonatomic, strong) UIImage *image;
+@property(nonatomic, strong) NSString *title;
+
++(instancetype)actionWithTitle:(NSString*)title image:(UIImage *)image;
 
 @end

@@ -12,10 +12,7 @@
                                  green:((c>>8)&0xFF)/255.0	\
                                   blue:(c&0xFF)/255.0         \
                                  alpha:a]
-#define RGB(c) [UIColor colorWithRed:((c>>16)&0xFF)/255.0    \
-green:((c>>8)&0xFF)/255.0    \
-blue:(c&0xFF)/255.0         \
-alpha:1]
+#define RGB(c) RGBA(c,1)
 
 @interface UIColor (Addition)
 

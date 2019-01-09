@@ -36,8 +36,7 @@ LC_SINGLE_M(MyConfig);
     
     //APP样式
     [UITableView appearance].keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
-    [UITableView appearance].separatorColor = RGB(0xF3F3F3);
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    [UITableView appearance].separatorColor = [UIColor tableViewSeparatorColor];
 }
 
 //UserModel

@@ -10,6 +10,7 @@
 #import "ToastManager.h"
 #import "HudManager.h"
 #import "NetworkingManager.h"
+#import "MyConfig.h"
 
 @implementation BaseOperation
 

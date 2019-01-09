@@ -13,6 +13,7 @@
 #import "BaseModel.h"
 #import "ToastManager.h"
 #import "Constant.h"
+#import "MyConfig.h"
 
 static NSInteger kunLoginState = -1;
 

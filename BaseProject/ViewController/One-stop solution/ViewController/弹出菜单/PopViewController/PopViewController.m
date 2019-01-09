@@ -7,13 +7,17 @@
 //
 
 #import "PopViewController.h"
-#import "UIColor+Addition.h"
+
+#define RGBA(c,a) [UIColor colorWithRed:((c>>16)&0xFF)/255.0    \
+green:((c>>8)&0xFF)/255.0    \
+blue:(c&0xFF)/255.0         \
+alpha:a]
 
 #define kWidth 145.f// 控件宽度
 
 @interface PopViewController ()
 
-@property(nonatomic, strong) NSArray<MenuItem*> *items;
+@property(nonatomic, strong) NSArray<PopAction*> *actions;
 @property(nonatomic, strong) void (^handler)(NSInteger index);
 
 @property(nonatomic, strong) UIStackView *stackView;
@@ -34,9 +38,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = RGB(0x282C34);
+    self.view.backgroundColor = RGBA(0x282C34, 1);
     [self.view addSubview:self.stackView];
-    [self.items enumerateObjectsUsingBlock:^(MenuItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self.actions enumerateObjectsUsingBlock:^(PopAction * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         [button setImage:obj.image forState:UIControlStateNormal];
         [button setTitle:obj.title forState:UIControlStateNormal];
@@ -63,7 +67,7 @@
 -(void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
     //计算内容视图的frame
-    self.contentSize = CGSizeMake(kWidth, (kMenuItemHeight + 1)*self.items.count - 1);
+    self.contentSize = CGSizeMake(kWidth, (kMenuItemHeight + 1)*self.actions.count - 1);
     self.stackView.frame = self.view.bounds;
     //分割线的frame
     __block NSInteger i = 1;
@@ -80,17 +84,17 @@
     [super viewDidLayoutSubviews];
 }
 
-+(instancetype)controllerWithSourceView:(UIView*)sourceView data:(NSArray<MenuItem*>*)items handler:(void(^)(NSInteger index)) handler{
++(instancetype)controllerWithSourceView:(UIView*)sourceView actions:(NSArray<PopAction*>*)actions handler:(void(^)(NSInteger index)) handler{
     PopViewController *controller = [[PopViewController alloc] init];
-    controller.items = items;
+    controller.actions = actions;
     controller.handler = handler;
     controller.sourceView = sourceView;
     return controller;
 }
 
-+(instancetype)controllerWithBarButtonItem:(UIBarButtonItem*)barItem data:(NSArray<MenuItem*>*)items handler:(void(^)(NSInteger index)) handler{
++(instancetype)controllerWithBarButtonItem:(UIBarButtonItem*)barItem actions:(NSArray<PopAction*>*)actions handler:(void(^)(NSInteger index)) handler{
     PopViewController *controller = [[PopViewController alloc] init];
-    controller.items = items;
+    controller.actions = actions;
     controller.handler = handler;
     controller.barItem = barItem;
     return controller;
@@ -103,4 +107,16 @@
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+@end
+
+
+@implementation PopAction
+
++(instancetype)actionWithTitle:(NSString*)title image:(UIImage *)image{
+    PopAction *action = [[PopAction alloc] init];
+    action.title = title;
+    action.image = image;
+    return action;
+}
+
 @end

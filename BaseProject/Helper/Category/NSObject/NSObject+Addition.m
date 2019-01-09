@@ -8,7 +8,6 @@
 #import <UIKit/UIKit.h>
 #import "NSObject+Addition.h"
 #import <objc/runtime.h>
-#import "MyConfig.h"
 
 @implementation NSObject (Addition)
 

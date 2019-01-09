@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MyConfig.h"
 #import "BaseModel.h"
 #import "MJExtension.h"
 #import "NSObject+Addition.h"

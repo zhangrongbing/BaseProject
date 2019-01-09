@@ -37,6 +37,10 @@
     [super viewDidLoad];
     self.tableData = @[@"设置", @"登录",@"容器",@"子控制器", @"手势密码", @"图片查看器", @"侧边栏",@"过场动画", @"伪搜索", @"城市", @"导航栏", @"详情页", @"网页交互", @"图片选取"].mutableCopy;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
+    NSString * str = @"abcd?1234?!@#";
+    NSRange range = [str rangeOfString:@"?"];
+    NSLog(@"range.length = %ld", range.length);
+    NSLog(@"range.location = %ld", range.location);
 }
 
 - (void)didReceiveMemoryWarning {

@@ -1,6 +1,5 @@
 
 #import "NSDictionary+Addition.h"
-#import "MyConfig.h"
 
 @implementation NSDictionary (Addition)
 

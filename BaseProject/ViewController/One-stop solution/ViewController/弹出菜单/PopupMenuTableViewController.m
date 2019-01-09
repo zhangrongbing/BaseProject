@@ -105,19 +105,19 @@ static NSString *CellIdentifier = @"CellIdentifier";
 
 #pragma mark - Action
 -(void)pressRightButtonItem:(UIButton*)button{
-    MenuItem *item1 = [MenuItem itemWithTitle:@"扫一扫" image:[UIImage imageNamed:@"扫一扫"]];
-    MenuItem *item2 = [MenuItem itemWithTitle:@"添加好友" image:[UIImage imageNamed:@"添加好友"]];
-    MenuItem *item3 = [MenuItem itemWithTitle:@"收付款" image:[UIImage imageNamed:@"收付款"]];
-    PopViewController *vc = [PopViewController controllerWithSourceView:button data:@[item1, item2, item3] handler:^(NSInteger index) {
+    PopAction *action1 = [PopAction actionWithTitle:@"扫一扫" image:[UIImage imageNamed:@"扫一扫"]];
+    PopAction *action2 = [PopAction actionWithTitle:@"添加好友" image:[UIImage imageNamed:@"添加好友"]];
+    PopAction *action3 = [PopAction actionWithTitle:@"收付款" image:[UIImage imageNamed:@"收付款"]];
+    PopViewController *vc = [PopViewController controllerWithSourceView:button actions:@[action1, action2, action3] handler:^(NSInteger index) {
         [[ToastManager sharedInstance] showMessage:@"点击了第%li个", (long)index];
     }];
     [self presentViewController:vc animated:YES completion:nil];
 }
 -(void)pressRightItem:(UIBarButtonItem*)item{
-    MenuItem *item1 = [MenuItem itemWithTitle:@"扫一扫" image:[UIImage imageNamed:@"扫一扫"]];
-    MenuItem *item2 = [MenuItem itemWithTitle:@"添加好友" image:[UIImage imageNamed:@"添加好友"]];
-    MenuItem *item3 = [MenuItem itemWithTitle:@"收付款" image:[UIImage imageNamed:@"收付款"]];
-    PopViewController *vc = [PopViewController controllerWithBarButtonItem:item data:@[item1, item2, item3] handler:^(NSInteger index) {
+    PopAction *action1 = [PopAction actionWithTitle:@"扫一扫" image:[UIImage imageNamed:@"扫一扫"]];
+    PopAction *action2 = [PopAction actionWithTitle:@"添加好友" image:[UIImage imageNamed:@"添加好友"]];
+    PopAction *action3 = [PopAction actionWithTitle:@"收付款" image:[UIImage imageNamed:@"收付款"]];
+    PopViewController *vc = [PopViewController controllerWithBarButtonItem:item actions:@[action1, action2, action3] handler:^(NSInteger index) {
         [[ToastManager sharedInstance] showMessage:@"点击了第%li个", (long)index];
     }];
     [self presentViewController:vc animated:YES completion:nil];
