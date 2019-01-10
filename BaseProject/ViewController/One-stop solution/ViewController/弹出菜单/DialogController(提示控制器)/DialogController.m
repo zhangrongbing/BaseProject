@@ -435,15 +435,28 @@ alpha:1]
 
 @implementation EvaluateController
 
-+(void)showController{
++(void)showControllerForPresentingController:(UIViewController*)controller{
     DialogAction *spitAction = [DialogAction actionWithTitle:@"我要吐槽" handler:^(DialogAction * _Nonnull action) {
         
     }];
     DialogAction *rejectAction = [DialogAction actionWithTitle:@"残忍拒绝" handler:nil];
+    //由于没有开发账号，这里先跳转到设置界面。
     DialogAction *goodAction = [DialogAction actionWithTitle:@"五星好评" handler:^(DialogAction * _Nonnull action) {
-        
+        if (@available(iOS 10, *)) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString] options:@{} completionHandler:^(BOOL success) {
+                
+            }];
+        }else if(@available(iOS 8, *)){
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        }else{
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:General&path=Reset"]];
+        }
     }];
-    
+    DialogController *dialog = [DialogController dialogControllerWithTitle:@"提示" message:@"去给我们一些评价吧"];
+    [dialog addAction:spitAction];
+    [dialog addAction:rejectAction];
+    [dialog addAction:goodAction];
+    [controller presentViewController:dialog animated:YES completion:nil];
 }
 
 @end

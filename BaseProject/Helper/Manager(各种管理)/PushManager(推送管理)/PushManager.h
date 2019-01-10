@@ -27,9 +27,9 @@ NS_ASSUME_NONNULL_BEGIN
  接受到三方透传消息
 
  @param manager 管理对象
- @param messageDic 透传消息内容
+ @param message 透传消息内容
  */
--(void)manager:(PushManager*)manager receiveRemoteMessgae:(NSDictionary*)messageDic;
+-(void)manager:(PushManager*)manager receiveRemoteMessgae:(NSString*)message;
 
 @end
 

@@ -40,7 +40,8 @@
 
 //官网返回的DeviceToken
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
-    NSString* DeviceToken = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"< >"]];
+    NSString* DeviceToken = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    DeviceToken = [DeviceToken stringByReplacingOccurrencesOfString:@" " withString:@""];
     DebugLog(@"官方返回的DeviceToken=%@", DeviceToken);
     [self initCloudPush];
 }

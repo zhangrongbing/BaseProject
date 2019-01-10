@@ -14,6 +14,7 @@
 #import "ColorLineViewController.h"
 #import "TabViewController.h"
 #import "ImageZoomViewController.h"
+#import "DialogController.h"
 
 @interface WidgetTableViewController ()
 
@@ -27,6 +28,8 @@
     [super viewDidLoad];
     self.tableData = @[@"轮播图", @"按钮", @"分段验证码", @"输入框", @"自定义UIView", @"选项卡"].mutableCopy;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"评价" style:UIBarButtonItemStylePlain target:self action:@selector(pressRightItem:)];
+    self.navigationItem.rightBarButtonItem = rightItem;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -87,4 +90,8 @@ static NSString *CellIdentifier = @"Cell";
     }
 }
 
+#pragma mark - Action
+-(void)pressRightItem:(UIBarButtonItem*)item{
+    [EvaluateController showControllerForPresentingController:self];
+}
 @end

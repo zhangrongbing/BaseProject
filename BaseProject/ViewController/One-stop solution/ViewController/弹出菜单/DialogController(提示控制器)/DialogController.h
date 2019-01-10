@@ -48,6 +48,6 @@ NS_ASSUME_NONNULL_END
 
 @interface EvaluateController : NSObject
 
-+(void)showController;
++(void)showControllerForPresentingController:(UIViewController*)controller;
 
 @end

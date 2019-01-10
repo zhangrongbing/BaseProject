@@ -16,11 +16,16 @@ SINGLE_M(PushManager);
     NSString* alert = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
     NSString* badge = [[userInfo objectForKey:@"aps"] objectForKey:@"badge"];
     [UIApplication sharedApplication].applicationIconBadgeNumber = [badge intValue];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didReceivePushData:)]) {
+        [self.delegate manager:self receiveRemoteNotification:userInfo];
+    }
     
     DebugLog(@"alert = %@, badge = %@", alert, badge);
 }
 
 -(void)didReceiveMessageData:(NSString*)data{
-    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didReceiveMessageData:)]) {
+        [self.delegate manager:self receiveRemoteMessgae:data];
+    }
 }
 @end
