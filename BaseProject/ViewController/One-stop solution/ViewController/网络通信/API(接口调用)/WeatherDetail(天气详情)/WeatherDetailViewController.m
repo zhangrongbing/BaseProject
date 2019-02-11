@@ -26,9 +26,13 @@
     params[@"weather_date"] = @"2018-08-27";
     
     WeatherOperation *operation = [[WeatherOperation alloc] initWithTarget:self params:params];
-    [NetworkingManager asyncOperation:operation handler:^(NSInteger state) {
-        WeatherModel *model = operation.model;
-        self.detailLabel.text = model.mj_JSONString;
+    [[NetworkingManager sharedInstance] asyncOperation:operation handler:^(NSInteger state) {
+        if (state == 0) {
+            WeatherModel *model = operation.model;
+            self.detailLabel.text = model.mj_JSONString;
+        }else{
+            
+        }
     }];
 }
 

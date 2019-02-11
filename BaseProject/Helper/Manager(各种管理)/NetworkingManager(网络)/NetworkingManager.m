@@ -14,39 +14,55 @@
 #import "ToastManager.h"
 #import "Constant.h"
 #import "MyConfig.h"
+#import "AFNetworkReachabilityManager.h"
 
 static NSInteger kunLoginState = -1;
 
 @interface NetworkingManager()
 
+@property(nonatomic, strong) AFHTTPSessionManager * manager;
+
 @end
 
 @implementation NetworkingManager
 
-+(AFHTTPSessionManager*)manager{
-    NSString* baseUrlString;
-    BOOL isDebug = YES;
-#ifdef _DEBUG
-    baseUrlString = kBaseUrlString_DEV;
-    isDebug = YES;
+SINGLE_M(NetworkingManager);
+
+-(instancetype)init{
+    if (self = [super init]) {
+        NSString* baseUrlString;
+        BOOL isDebug = YES;
+#ifdef DEBUG
+        baseUrlString = kBaseUrlString_DEV;
+        isDebug = YES;
 #else
-    baseUrlString = kBaseUrlString_DIS;
-    isDebug = NO;
+        baseUrlString = kBaseUrlString_DIS;
+        isDebug = NO;
 #endif
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:baseUrlString]];
-    manager.securityPolicy.allowInvalidCertificates = isDebug;
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.requestSerializer.timeoutInterval = 6.f;
-    [manager.requestSerializer setValue:[MyConfig sharedInstance].token forHTTPHeaderField:@"token"];
-    return manager;
+        self.manager = [AFHTTPSessionManager manager];
+        self.manager.securityPolicy.allowInvalidCertificates = isDebug;
+        self.manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        self.manager.requestSerializer.timeoutInterval = 6.f;
+        [self.manager.requestSerializer setValue:[MyConfig sharedInstance].token forHTTPHeaderField:@"token"];
+        
+        AFNetworkReachabilityManager *reachabilityManager = [AFNetworkReachabilityManager sharedManager];
+        static dispatch_once_t token;
+        dispatch_once(&token, ^{
+            [reachabilityManager startMonitoring];
+            [reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+                
+            }];
+        });
+    }
+    return self;
 }
 
-+(void) asyncOperation:(BaseOperation*)baseOperation handler:(handler)handler{
-    [[self class] asyncOperation:baseOperation handler:handler headerField:nil];
+-(void) asyncOperation:(BaseOperation*)baseOperation handler:(handler)handler{
+    [self asyncOperation:baseOperation handler:handler headerField:nil];
 }
 
 
-+(void)_successWithOperation:(BaseOperation*)baseOperation jsonObject:(id)responseObject block:(handler)block{
+-(void)_successWithOperation:(BaseOperation*)baseOperation jsonObject:(id)responseObject block:(handler)block{
     __block id jsonObjcect = @"";
     if ([responseObject isKindOfClass:[NSString class]]) {
         jsonObjcect = responseObject;
@@ -60,45 +76,43 @@ static NSInteger kunLoginState = -1;
     [baseOperation operation:baseOperation baseModel:baseModel];
     
     //token是否过期了
-    if (baseOperation.baseModel.state == kunLoginState && baseOperation.autoLogin) {
+    if (baseOperation.baseModel.code == kunLoginState && baseOperation.autoLogin) {
         //弹出登录界面
         [[NSNotificationCenter defaultCenter] postNotificationName:kNotification_Logout object:nil];
     }else{
         if (block) {
-            block(baseOperation.baseModel.state);
+            block(baseOperation.baseModel.code);
         }
     }
 }
 
-+(void)_failureWithBaseOperation:(BaseOperation*)baseOperation error:(NSError*)error block:(handler) block{
+-(void)_failureWithBaseOperation:(BaseOperation*)baseOperation error:(NSError*)error block:(handler) block{
     BaseModel* baseModel = [BaseModel new];
-    baseModel.state = -100;
-    baseModel.message = [self _errorMessage:error];
-    baseModel.returnStatus = @"";
-    baseModel.mapData = @{};
+    baseModel.code = -100;
+    baseModel.msg = [self _errorMessage:error];
+    baseModel.data = @{};
     [baseOperation operation:baseOperation baseModel:baseModel];
-    [[ToastManager sharedInstance] showMessage:@"%@",baseModel.message];
+    [[ToastManager sharedInstance] showMessage:@"%@",baseModel.msg];
     
     NSData *data = error.userInfo[@"com.alamofire.serialization.response.error.data"] ;
     NSString *errorStr = [[ NSString alloc ] initWithData:data encoding:NSUTF8StringEncoding];
     DebugLog(@"----------访问失败ERROR：----------\n%@\n错误信息:%@", error, errorStr);
     if (block) {
-        block(baseModel.state);
+        block(baseModel.code);
     }
 }
 
-+(void) asyncOperation:(BaseOperation*)baseOperation handler:(handler)handler headerField:(NSDictionary<NSString*, NSString*>*)headerField{
-    AFHTTPSessionManager* manager = [[self class] manager];
+-(void) asyncOperation:(BaseOperation*)baseOperation handler:(handler)handler headerField:(NSDictionary<NSString*, NSString*>*)headerField{
     for (NSString *key in headerField) {
         NSString *value = [headerField valueForKey:key];
-        [manager.requestSerializer setValue:value forHTTPHeaderField:key];
+        [self.manager.requestSerializer setValue:value forHTTPHeaderField:key];
     }
     if (headerField) {
         NSEnumerator* enumerator = [headerField keyEnumerator];
         NSString* key;
         while ((key = [enumerator nextObject])) {
             NSString *value = [headerField valueForKey:key];
-            [manager.requestSerializer setValue:value forHTTPHeaderField:key];
+            [self.manager.requestSerializer setValue:value forHTTPHeaderField:key];
         }
     }
     if ([baseOperation.target isKindOfClass:[UIViewController class]]) {
@@ -111,35 +125,35 @@ static NSInteger kunLoginState = -1;
     [baseOperation willRequestForOperation:baseOperation];
     //请求是否序列化
     if (baseOperation.isSerialize) {
-        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
     }
     //设置请求头
     NSDictionary* dic = baseOperation.headerKeyValues;
     for (NSString* key in dic) {
-        [manager.requestSerializer setValue:dic[key] forHTTPHeaderField:key];
+        [self.manager.requestSerializer setValue:dic[key] forHTTPHeaderField:key];
     }
     
-    manager.requestSerializer.timeoutInterval = baseOperation.timeoutInterval;
+    self.manager.requestSerializer.timeoutInterval = baseOperation.timeoutInterval;
     if ([baseOperation.method isEqualToString:@"get"]) {
-        [manager GET:baseOperation.action parameters:baseOperation.params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [self.manager GET:baseOperation.action parameters:baseOperation.params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             [self _successWithOperation:baseOperation jsonObject:responseObject block:handler];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             [self _failureWithBaseOperation:baseOperation error:error block:handler];
         }];
     }else if([baseOperation.method isEqualToString:@"post"]){
-        [manager POST:baseOperation.action parameters:baseOperation.params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [self.manager POST:baseOperation.action parameters:baseOperation.params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             [self _successWithOperation:baseOperation jsonObject:responseObject block:handler];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             [self _failureWithBaseOperation:baseOperation error:error block:handler];
         }];
     }else if([baseOperation.method isEqualToString:@"put"]){
-        [manager PUT:baseOperation.action parameters:baseOperation.params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [self.manager PUT:baseOperation.action parameters:baseOperation.params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             [self _successWithOperation:baseOperation jsonObject:responseObject block:handler];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             [self _failureWithBaseOperation:baseOperation error:error block:handler];
         }];
     }else if([baseOperation.method isEqualToString:@"delete"]){
-        [manager DELETE:baseOperation.action parameters:baseOperation.params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [self.manager DELETE:baseOperation.action parameters:baseOperation.params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             [self _successWithOperation:baseOperation jsonObject:responseObject block:handler];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             [self _failureWithBaseOperation:baseOperation error:error block:handler];
@@ -149,7 +163,7 @@ static NSInteger kunLoginState = -1;
     }
 }
 
-+ (NSString *)_errorMessage:(NSError *)error {
+- (NSString *)_errorMessage:(NSError *)error {
     NSString *msg;
     if (error.code == -1) {
         msg = @"服务器打瞌睡了";

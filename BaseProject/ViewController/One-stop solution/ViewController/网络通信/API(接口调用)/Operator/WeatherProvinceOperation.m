@@ -20,7 +20,7 @@
 
 -(void)operation:(BaseOperation *)operation baseModel:(BaseModel *)baseModel{
     [super operation:operation baseModel:baseModel];
-    NSArray *citys = baseModel.mapData;
-    self.data = [ProvinceModel mj_objectArrayWithKeyValuesArray:citys]; 
+//    NSArray *citys = baseModel.mapData;
+//    self.data = [ProvinceModel mj_objectArrayWithKeyValuesArray:citys]; 
 }
 @end

@@ -10,6 +10,7 @@
 #import "AFNetworking.h"
 #import "BaseOperation.h"
 #import "Constant.h"
+#import "NSObject+Single.h"
 
 typedef void(^handler)(NSInteger state);
 
@@ -17,12 +18,14 @@ typedef void(^handler)(NSInteger state);
 
 @interface NetworkingManager : NSObject
 
+SINGLE_H(NetworkingManager);
+@property(nonatomic, assign) AFNetworkReachabilityStatus status;
 /**
  加入操作类，访问服务器
  
  @param baseOperation 接口操作类
  */
-+(void) asyncOperation:(BaseOperation*)baseOperation handler:(handler)handler;
+-(void) asyncOperation:(BaseOperation*)baseOperation handler:(handler)handler;
 
 
 /**
@@ -32,6 +35,6 @@ typedef void(^handler)(NSInteger state);
  @param handler 回调块
  @param headerField 往请求头加入参数
  */
-+(void) asyncOperation:(BaseOperation*)baseOperation handler:(handler)handler headerField:(NSDictionary<NSString*, NSString*>*)headerField;
+-(void) asyncOperation:(BaseOperation*)baseOperation handler:(handler)handler headerField:(NSDictionary<NSString*, NSString*>*)headerField;
 @end
 

@@ -26,7 +26,7 @@
         self.style = style;
         self.curIndex = index;
         self.sliderWidthStyle = SegmentControlSliderWidthStyleTextWidth;
-        self.selectedTextColor = [UIColor blackColor];
+        self.selectedTextColor = [UIColor redColor];
         self.textColor = [UIColor blackColor];
         self.sliderColor = [UIColor blackColor];
         self.showsVerticalScrollIndicator = NO;
@@ -37,11 +37,6 @@
 }
 
 #pragma mark - OverWrite
-
--(void)willMoveToSuperview:(UIView *)newSuperview{
-    [super willMoveToSuperview:newSuperview];
-    
-}
 
 -(void)layoutSubviews{
     [super layoutSubviews];

@@ -15,15 +15,15 @@
         self.action = @"http://v.juhe.cn/historyWeather/province";
         self.isSerialize = NO;
         self.isShowLog = NO;
+        self.isShowHud = NO;
+        self.name = @"接口一";
     }
     return self;
 }
 
 -(void)operation:(BaseOperation *)operation baseModel:(BaseModel *)baseModel{
     [super operation:operation baseModel:baseModel];
-    @synchronized (self) {
-        DebugLog(@"----------接口返回数据:----------\n%@", baseModel.mj_JSONString);
-    }
+    
 }
 
 @end

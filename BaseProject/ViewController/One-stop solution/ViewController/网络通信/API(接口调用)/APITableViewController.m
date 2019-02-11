@@ -26,7 +26,7 @@
     params[@"key"] = @"610a09989477905e1682436530d72088";
     
     WeatherProvinceOperation *operator = [[WeatherProvinceOperation alloc] initWithTarget:self params:params];
-    [NetworkingManager asyncOperation:operator handler:^(NSInteger state) {
+    [[NetworkingManager sharedInstance] asyncOperation:operator handler:^(NSInteger state) {
         if (state == 0) {
             self.tableData = operator.data;
             [self.tableView reloadData];

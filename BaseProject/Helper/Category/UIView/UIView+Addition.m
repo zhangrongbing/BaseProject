@@ -11,95 +11,115 @@
 
 @implementation UIView (Addition)
 
--(void)setLc_x:(CGFloat)lc_x{
-    CGRect frame = self.frame;
-    frame.origin.x = lc_x;
-    self.frame = frame;
-}
-
--(CGFloat)lc_x{
+- (CGFloat)left{
     return self.frame.origin.x;
 }
 
--(void)setLc_y:(CGFloat)lc_y{
+- (void)setLeft:(CGFloat)left{
     CGRect frame = self.frame;
-    frame.origin.y = lc_y;
+    frame.origin.x = left;
     self.frame = frame;
 }
 
--(CGFloat)lc_y{
+- (CGFloat)right{
+    return CGRectGetMaxX(self.frame);
+}
+
+-(void)setRight:(CGFloat)right{
+    CGRect frame = self.frame;
+    frame.origin.x = right - frame.size.width;
+    self.frame = frame;
+}
+
+- (CGFloat)top{
     return self.frame.origin.y;
 }
 
--(void)setLc_w:(CGFloat)lc_w{
+- (void)setTop:(CGFloat)top{
     CGRect frame = self.frame;
-    frame.size.width = lc_w;
+    frame.origin.y = top;
     self.frame = frame;
 }
 
--(CGFloat)lc_w{
+- (CGFloat)bottom{
+    return CGRectGetMaxY(self.frame);
+}
+
+- (void)setBottom:(CGFloat)bottom{
+    CGRect frame = self.frame;
+    frame.origin.y = bottom - frame.size.height;
+    self.frame = frame;
+}
+
+- (CGFloat)width{
     return self.frame.size.width;
 }
 
--(void)setLc_h:(CGFloat)lc_h{
+- (void)setWidth:(CGFloat)width{
     CGRect frame = self.frame;
-    frame.size.height = lc_h;
+    frame.size.width = width;
     self.frame = frame;
 }
 
--(CGFloat)lc_h{
+- (CGFloat)height{
     return self.frame.size.height;
 }
 
--(void)setLc_size:(CGSize)lc_size{
+- (void)setHeight:(CGFloat)height{
     CGRect frame = self.frame;
-    frame.size = lc_size;
+    frame.size.height = height;
     self.frame = frame;
 }
 
--(CGSize)lc_size{
-    return self.frame.size;
+- (CGFloat)centerX{
+    return self.center.x;
 }
 
--(void)setLc_origin:(CGPoint)lc_origin{
-    CGRect frame = self.frame;
-    frame.origin = lc_origin;
-    self.frame = frame;
+- (void)setCenterX:(CGFloat)centerX{
+    CGPoint pt = self.center;
+    pt.x = centerX;
+    self.center = pt;
 }
 
--(CGPoint)lc_origin{
+- (CGFloat)centerY{
+    return self.center.y;
+}
+
+- (void)setCenterY:(CGFloat)centerY{
+    CGPoint pt = self.center;
+    pt.y = centerY;
+    self.center = pt;
+}
+
+- (CGPoint)boundsCenter{
+    return CGPointMake(self.width / 2.f, self.height / 2.f);
+}
+
+- (CGFloat)boundsCenterX{
+    return self.width / 2.f;
+}
+
+- (CGFloat)boundsCenterY{
+    return self.height / 2.f;
+}
+
+- (CGPoint)origin{
     return self.frame.origin;
 }
 
--(CGPoint)lc_center{
-    return self.center;
-}
-
--(void)setLc_b:(CGFloat)lc_b{
+- (void)setOrigin:(CGPoint)origin{
     CGRect frame = self.frame;
-    frame.origin.y = lc_b - frame.size.height;
+    frame.origin = origin;
     self.frame = frame;
 }
 
--(CGFloat)lc_b{
+- (CGSize)size{
+    return self.frame.size;
+}
+
+- (void)setSize:(CGSize)size{
     CGRect frame = self.frame;
-    return frame.origin.y + frame.size.height;
-}
-
--(void)setLc_center:(CGPoint)lc_center{
-    CGPoint point = self.center;
-    point.x = lc_center.x;
-    point.y = lc_center.y;
-    self.center = point;
-}
-
--(CGFloat)lc_r{
-    return self.lc_x + self.lc_w;
-}
-
--(void)setLc_r:(CGFloat)lc_r{
-    CGRect frame = self.frame;
-    frame.origin.x = lc_r - frame.size.width;
+    frame.size = size;
     self.frame = frame;
 }
 
@@ -126,6 +146,14 @@
         [subViews addObject:obj];
     }];
     return subViews;
+}
+
+-(CGRect)safeTop_bounds{
+    if (@available(iOS 11, *)) {
+        CGRect rect = self.bounds;
+        rect.size = CGSizeMake(rect.size.width, rect.size.height - kSafeTop);
+    }
+    return self.bounds;
 }
 @end
 

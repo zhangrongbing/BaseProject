@@ -14,9 +14,9 @@
 
 #define DebugLog(...){\
 NSDateFormatter* format = [[NSDateFormatter alloc] init];\
-format.dateFormat = @"YYYY-MM-dd HH:mm:ss";\
+format.dateFormat = @"YYYY-MM-dd HH:mm:ssss";\
 NSString *dateStr = [format stringFromDate:[NSDate date]];\
-printf("%s{行数: %d|方法:%s}%s\n",[dateStr UTF8String], __LINE__, __func__, [[NSString stringWithFormat:__VA_ARGS__]UTF8String]);\
+printf("%s{行数: %d|方法:%s %s}%s\n",[dateStr UTF8String], __LINE__, [NSStringFromClass([self class]) UTF8String], [NSStringFromSelector(_cmd) UTF8String], [[NSString stringWithFormat:__VA_ARGS__]UTF8String]);\
 }
 #else
 #define DebugLog(...)

@@ -10,8 +10,10 @@
 #import "BaseViewController.h"
 #import "SwipeBack.h"
 #import "BaseTableViewController.h"
+#import "PushManager.h"
+#import "ShortcutManager.h"
 
-@interface BaseNavigationController ()
+@interface BaseNavigationController ()<PushManagerDelegate, ShortcutManagerDelegate>
 
 @property(nonatomic, strong) BaseViewController* curViewController;
 
@@ -32,8 +34,11 @@
     [self.navigationBar setBarTintColor:RGB(0x297FCA)];
     [self.navigationBar setTintColor:[UIColor whiteColor]];
 }
+
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [PushManager sharedInstance].delegate = self;
+    [ShortcutManager sharedInstance].delegate = self;
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -66,6 +71,7 @@
     UIViewController* controller = self.topViewController;
     return [controller preferredStatusBarStyle];
 }
+
 //状态栏
 -(BOOL)prefersStatusBarHidden{
     return [self.topViewController prefersStatusBarHidden];

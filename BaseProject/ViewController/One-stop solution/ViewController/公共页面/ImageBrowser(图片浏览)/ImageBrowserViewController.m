@@ -64,9 +64,6 @@ static NSString *CellIdentifier = @"ImageCollectionViewCell";
     ImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     NSString *urlStr = [self.collectionData objectAtIndex:indexPath.item];
     [cell.imageView setImageWithURL:[NSURL URLWithString:urlStr]];
-#ifdef _DEBUG
-    
-#endif
 
     return cell;
 }

@@ -33,7 +33,7 @@
 //    self.segmentControl.menuDelegate = self;
 //    [self.view addSubview:self.segmentControl];
     
-    CGRect rect = CGRectMake(0, self.segmentControl.lc_b, kScreenWidth, kScreenHeight - self.segmentControl.lc_b);
+    CGRect rect = CGRectMake(0, self.segmentControl.bottom, kScreenWidth, kScreenHeight - self.segmentControl.bottom);
     self.firstVC.view.frame = rect;
     [self addChildViewController:self.firstVC];
     [self.view addSubview:self.firstVC.view];
@@ -90,7 +90,7 @@
     if ([oldVC isKindOfClass:[newVC class]]) {
         return;
     }
-    CGRect rect = CGRectMake(0, self.segmentControl.lc_b, kScreenWidth, kScreenHeight - self.segmentControl.lc_b);
+    CGRect rect = CGRectMake(0, self.segmentControl.bottom, kScreenWidth, kScreenHeight - self.segmentControl.bottom);
     newVC.view.frame = rect;
     
     [self addChildViewController:newVC];

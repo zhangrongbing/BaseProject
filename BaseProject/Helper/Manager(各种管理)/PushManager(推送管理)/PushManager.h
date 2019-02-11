@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol PushManagerDelegate <NSObject>
 
 
+@optional
 /**
  接收到远程通知
 

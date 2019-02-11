@@ -39,6 +39,7 @@ typedef NS_ENUM(NSInteger, SegmentControlStyle){
 
 @property(nonatomic, strong) UIColor* sliderColor;
 @property(nonatomic, strong) UIColor* textColor;
+@property(nonatomic, assign) BOOL textAnimated;
 @property(nonatomic, strong) UIColor* selectedTextColor;
 @property(nonatomic, strong) UIColor* slidewayColor;
 @property(nonatomic, assign) SegmentControlStyle style;//选项卡的宽度
@@ -46,7 +47,6 @@ typedef NS_ENUM(NSInteger, SegmentControlStyle){
 @property(nonatomic, weak) id<SegmentControlDelegate> menuDelegate;
 @property(nonatomic, weak) id<SegmentControlDataSource> menuDataSource;
 @property(nonatomic, assign) SegmentControlSliderWidthStyle sliderWidthStyle;//滑块的宽度
-
 -(instancetype)initWithStyle:(SegmentControlStyle)style defaultIndex:(NSInteger) index;
 
 -(void)moveToIndex:(NSInteger)index;

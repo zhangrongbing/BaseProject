@@ -18,7 +18,7 @@
 
 - (void)registerAPNS:(UIApplication *)application {
 
-#ifdef __IPHONE_8_0
+#ifdef __IPHONE_10_0
     if (@available(iOS 10, *)) {
         UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
         center.delegate = self;
@@ -27,11 +27,11 @@
             DebugLog(@"granted = %@ error = %@", granted?@"yes":@"no", error);
         }];
         [application registerForRemoteNotifications];
-    }else if(@available(iOS 8, *)){
-        [application registerUserNotificationSettings: [UIUserNotificationSettings settingsForTypes: (UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
-        [application registerForRemoteNotifications];
-        DebugLog(@"");
     }
+#elif __IPHONE_8_0
+    [application registerUserNotificationSettings: [UIUserNotificationSettings settingsForTypes: (UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+    [application registerForRemoteNotifications];
+    DebugLog(@"");
 #else
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound)];
     DebugLog(@"");
@@ -50,12 +50,31 @@
     DebugLog(@"离线通知注册失败:ERROR= %@", error);
 }
 
+//接收通知
 #ifdef __IPHONE_10_0
-//收到离线通知
--(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
-    [[PushManager sharedInstance] didReceivePushData:userInfo];
-    DebugLog(@"收到了离线通知");
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler API_AVAILABLE(ios(10.0)){//将要展示
+    
+    if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]){//远程通知
+        NSDictionary *userInfo = notification.request.content.userInfo;
+        [[PushManager sharedInstance] didReceivePushData:userInfo];
+    }else{//本地通知
+        
+    }
+    completionHandler(UNNotificationPresentationOptionNone);
 }
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)(void))completionHandler API_AVAILABLE(ios(10.0)){
+    
+    if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]){//远程通知
+        NSDictionary *userInfo = response.notification.request.content.userInfo;
+        [[PushManager sharedInstance] didReceivePushData:userInfo];
+    }else{//本地通知
+        
+    }
+    completionHandler();
+    
+}
+
 #else
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     [[PushManager sharedInstance] didReceivePushData:userInfo];
@@ -64,23 +83,10 @@
 #endif
 
 //收到本地通知
-//- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
-//    DebugLog(@"收到了本地通知");
-//}
-
-#pragma mark - UNUserNotificationCenterDelegate ios 10.0, *
-#ifdef __IPHONE_10_0
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler API_AVAILABLE(ios(10.0)){//将要展示
-    DebugLog(@"收到了通知");
-    completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound);
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
+    
+    DebugLog(@"收到了本地通知");
 }
-
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)(void))completionHandler API_AVAILABLE(ios(10.0)){
-    DebugLog(@"收到了通知");
-    completionHandler();
-}
-#endif
-
 #pragma mark - Public
 //发送本地通知
 -(void)sendLocalNotification{

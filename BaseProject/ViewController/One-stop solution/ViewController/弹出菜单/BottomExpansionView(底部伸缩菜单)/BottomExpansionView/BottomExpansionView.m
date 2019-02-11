@@ -40,7 +40,7 @@ static CGFloat DefaultTitleHeight = 20.f;
         self.selectedBlock = block;
         
         if (data.count > 0) {
-            self.lc_h = 70.f;
+            self.height = 70.f;
             UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, DefaultTitleHeight)];
             label.textColor = RGBA(0x333333, 1);
             label.textAlignment = NSTextAlignmentCenter;
@@ -63,7 +63,7 @@ static CGFloat DefaultTitleHeight = 20.f;
             self.label =label;
             self.button = button;
         }else{
-            self.lc_h = ButtonHeight;
+            self.height = ButtonHeight;
             UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, ButtonHeight)];
             label.text = defaultTitle;
             label.textAlignment = NSTextAlignmentCenter;
@@ -86,7 +86,7 @@ static CGFloat DefaultTitleHeight = 20.f;
         offsetY = 40.f;
     }
     [UIView animateWithDuration:.3 animations:^{
-        self.lc_y -= offsetY;
+        self.top -= offsetY;
     } completion:^(BOOL finished) {
         
     }];
@@ -140,8 +140,8 @@ static CGFloat DefaultTitleHeight = 20.f;
         make.bottom.equalTo(self.button.mas_top);
     }];
     [UIView animateWithDuration:.3f animations:^{
-        self.lc_y -= self.heightOffset;
-        self.lc_h += self.heightOffset;
+        self.top -= self.heightOffset;
+        self.height += self.heightOffset;
     } completion:^(BOOL finished) {
         self.userInteractionEnabled = YES;
     }];
@@ -150,8 +150,8 @@ static CGFloat DefaultTitleHeight = 20.f;
 
 -(void)close{
     [UIView animateWithDuration:.3f animations:^{
-        self.lc_y += self.heightOffset;
-        self.lc_h -= self.heightOffset;
+        self.top += self.heightOffset;
+        self.height -= self.heightOffset;
     } completion:^(BOOL finished) {
         self.userInteractionEnabled = YES;
         self.tableView.dataSource = nil;

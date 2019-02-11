@@ -24,10 +24,11 @@ PODS:
     - AlicloudUTDID
   - Bugly (2.5.0)
   - CocoaAsyncSocket (7.6.3)
+  - DZNEmptyDataSet (1.8.1)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
-  - FreeStreamer (3.8.3):
+  - FreeStreamer (3.9.1):
     - Reachability (~> 3.0)
   - HXWeiboPhotoPicker (2.1.5):
     - SDWebImage (~> 4.0)
@@ -40,9 +41,9 @@ PODS:
   - Reachability (3.2)
   - SDCycleScrollView (1.75):
     - SDWebImage (>= 4.0.0)
-  - SDWebImage (4.4.2):
-    - SDWebImage/Core (= 4.4.2)
-  - SDWebImage/Core (4.4.2)
+  - SDWebImage (4.4.5):
+    - SDWebImage/Core (= 4.4.5)
+  - SDWebImage/Core (4.4.5)
   - SocketRocket (0.5.1)
   - SwipeBack (1.1.1)
   - TZImagePickerController (1.9.8)
@@ -50,7 +51,7 @@ PODS:
   - VTMagic (1.2.4):
     - VTMagic/Core (= 1.2.4)
   - VTMagic/Core (1.2.4)
-  - YBImageBrowser (2.1.0):
+  - YBImageBrowser (2.1.3):
     - SDWebImage
     - YYImage
   - YYImage (1.0.4):
@@ -62,6 +63,7 @@ DEPENDENCIES:
   - AlicloudPush (~> 1.9.8)
   - Bugly (~> 2.5.0)
   - CocoaAsyncSocket (~> 7.6.3)
+  - DZNEmptyDataSet
   - FMDB (~> 2.7.2)
   - FreeStreamer
   - HXWeiboPhotoPicker
@@ -90,6 +92,7 @@ SPEC REPOS:
     - AFNetworking
     - Bugly
     - CocoaAsyncSocket
+    - DZNEmptyDataSet
     - FMDB
     - FreeStreamer
     - HXWeiboPhotoPicker
@@ -112,14 +115,15 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  AlicloudPush: 50df02cff716d9ac950ceb89195d447e7af003a2
-  AlicloudUT: 1b52965b97c5fc0b630901ce184391fbe1ef8479
-  AlicloudUTDID: 14b582e41b39bc66e5a3420b61dafd0567ef4603
-  AlicloudUtils: 8ec4614eb89da8e8d6f338b02fb2150d07fad4a9
+  AlicloudPush: 3bdd90f69af50562275483b5157571f0a7c50a19
+  AlicloudUT: 5e6a87a56c08ca72c6711beec2449e1c254728ef
+  AlicloudUTDID: 79f509c3e997ef85fe307f8bfb2bb3be27f7e205
+  AlicloudUtils: 9047114c9c1854205ae26db58264bf1555242ffb
   Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
-  FreeStreamer: b205b0bf6a2e7855f935369145498f930eb27cac
+  FreeStreamer: f10ecc1208400a1298c93c08ea2f27c030f2cce9
   HXWeiboPhotoPicker: b389ed6a2f854270aa391c55591d0616a519c881
   IQKeyboardManager: 266cb7b1d11f94a3e71229d77f960f9a1b538e5b
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -129,15 +133,15 @@ SPEC CHECKSUMS:
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDCycleScrollView: 884b88f0266dd4708a0e1934975c69cb971707b1
-  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
+  SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   SwipeBack: d6759601b40da1f4161033feb30ab475d7d04322
   TZImagePickerController: 3b9413ae5d049b1fdc5b0c720ad283f35b679a50
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
   VTMagic: b49e5f456dbcbfd9a3588ba92417233a105bc193
-  YBImageBrowser: 92fbd4c0adffe46a9af67c2f0617d7ed03ef1e33
+  YBImageBrowser: 6cf686865d60bc684d56d828bce11409f21343a9
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
 
-PODFILE CHECKSUM: 9a055ce5b634f2dbc6307229c4d7c200a70a6dd8
+PODFILE CHECKSUM: 4955eb9584f1fee3fd30eaeed5651ae3f9453632
 
 COCOAPODS: 1.6.0.beta.2

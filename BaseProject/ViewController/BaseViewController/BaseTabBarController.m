@@ -7,12 +7,21 @@
 //
 
 #import "BaseTabBarController.h"
+#import "ViewController.h"
 
 @interface BaseTabBarController ()
 
 @end
 
 @implementation BaseTabBarController
+
+-(instancetype)init{
+    if (self = [super init]) {
+        ViewController *controller = [[ViewController alloc] init];
+        [self addChildViewController:controller title:@"首页" norImage:nil selImage:nil];
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

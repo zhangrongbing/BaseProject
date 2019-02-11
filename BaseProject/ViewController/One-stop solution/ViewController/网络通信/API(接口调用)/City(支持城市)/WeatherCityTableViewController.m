@@ -27,7 +27,7 @@
     params[@"province_id"] = self.provinceModel._id;
     
     WeatherCityOperation *operation = [[WeatherCityOperation alloc] initWithTarget:self params:params];
-    [NetworkingManager asyncOperation:operation handler:^(NSInteger state) {
+    [[NetworkingManager sharedInstance] asyncOperation:operation handler:^(NSInteger state) {
         self.tableData = operation.data;
         [self.tableView reloadData];
     }];

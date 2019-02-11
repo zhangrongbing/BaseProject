@@ -19,6 +19,7 @@ pod 'VTMagic', '1.2.4'
 pod 'TZImagePickerController', '~> 1.9.5'
 pod 'UITextView+Placeholder', '~> 1.2'
 pod 'Reachability'
+pod 'DZNEmptyDataSet'
 
 
 

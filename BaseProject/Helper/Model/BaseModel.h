@@ -10,11 +10,8 @@
 
 @interface BaseModel : NSObject
 
-@property(nonatomic, assign) NSInteger state;
-@property(nonatomic, strong) NSString* message;
-@property(nonatomic, strong) NSString* returnStatus;
-@property(nonatomic, strong) id mapData;
-
--(id)returnData;
+@property(nonatomic, assign) NSInteger code;
+@property(nonatomic, strong) NSString* msg;
+@property(nonatomic, strong) id data;
 
 @end

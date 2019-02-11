@@ -40,11 +40,6 @@
     return self;
 }
 
-#pragma mark - Getter and Setter
--(void)setTarget:(id)target{
-    _target = target;
-}
-
 -(NSString*)action{
     NSAssert(_action, @"action is not nil!!");
     
@@ -52,17 +47,10 @@
     if ([_params isKindOfClass:[NSDictionary class]]) {
         _params = [_params mutableCopy];
     }
-    if ([_action containsString:@"http:"] || [_action containsString:@"https:"]) {
+    if ([_action hasPrefix:@"http:"] || [_action hasPrefix:@"https:"]) {
         action = _action;
     }else {
-        if(self.extensibleAction){
-            action = [NSString stringWithFormat:@"%@/%@", _action,self.extensibleAction];
-        }else{
-            action = [NSString stringWithFormat:@"%@", _action];
-        }
-    }
-    if (self.isShowLog) {
-        DebugLog(@"----------接口地址:%@----------\n***********传入参数***********token：%@\n%@\n", action,[MyConfig sharedInstance].token, _params);
+        action = [NSString stringWithFormat:@"%@", _action];
     }
     return action;
 }
@@ -70,8 +58,12 @@
 #pragma mark - Public
 //即将要访问接口
 -(void)willRequestForOperation:(BaseOperation*)operation{
+    //开始转菊花
     if (self.isShowHud) {
         [[HudManager sharedInstance] showHud:YES];
+    }
+    if (self.isShowLog) {
+        DebugLog(@"----------接口地址:%@----------\n***********传入参数***********token：%@\n%@\n", operation.action,[MyConfig sharedInstance].token, operation.params);
     }
 }
 //解析接口数据

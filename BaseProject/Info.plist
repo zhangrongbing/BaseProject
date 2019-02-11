@@ -87,5 +87,16 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.shortcutItem.share</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>分享</string>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string></string>
+		</dict>
+	</array>
 </dict>
 </plist>

@@ -7,6 +7,7 @@
 //
 
 #import "ContainerViewController.h"
+#import "UIView+Addition.h"
 
 #define SliderTableMenuViewHeight 45.f
 
@@ -52,12 +53,13 @@
     UIView *segmentControl = self.segmentControl;
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[segmentControl]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(segmentControl)]];
     NSDictionary *metrics;
-    if (@available(iOS 11, *)) {
-        metrics = @{@"NavigationBarHeight":@(self.view.safeAreaInsets.top)};
-    }else{
-        metrics = @{@"NavigationBarHeight":@(64)};
-    }
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-NavigationBarHeight-[segmentControl(==45)]" options:0 metrics:metrics views:NSDictionaryOfVariableBindings(segmentControl)]];
+//    if (@available(iOS 11, *)) {
+//        metrics = @{@"NavigationBarHeight":@(self.view.safeAreaInsets.top)};
+//    }else{
+//        metrics = @{@"NavigationBarHeight":@(64)};
+//    }
+    metrics = @{@"SafeTop":@(kSafeTop)};
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-SafeTop-[segmentControl(==45)]" options:0 metrics:metrics views:NSDictionaryOfVariableBindings(segmentControl)]];
     //UIPageViewController.view
     UIView *pageControllerView = self.pageController.view;
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[pageControllerView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(pageControllerView)]];

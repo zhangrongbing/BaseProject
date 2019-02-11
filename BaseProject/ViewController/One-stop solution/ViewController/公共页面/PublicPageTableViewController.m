@@ -21,8 +21,7 @@
 #import "CustomNavigationController.h"
 #import "SoundViewController.h"
 #import "ScrollableDetailController.h"
-#import "LCWebBrowserViewController.h"
-#import "PickPhotoViewController.h"
+#import "TopicDetailViewController.h"
 
 @interface PublicPageTableViewController ()
 
@@ -35,7 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableData = @[@"设置", @"登录",@"容器",@"子控制器", @"手势密码", @"图片查看器", @"侧边栏",@"过场动画", @"伪搜索", @"城市", @"导航栏", @"详情页", @"网页交互", @"图片选取"].mutableCopy;
+    self.tableData = @[@"设置", @"登录",@"容器",@"子控制器", @"手势密码", @"图片查看器", @"侧边栏",@"过场动画", @"伪搜索", @"城市", @"导航栏", @"详情页", @"网页交互", @"图片选取", @"新闻详情"].mutableCopy;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
     NSString * str = @"abcd?1234?!@#";
     NSRange range = [str rangeOfString:@"?"];
@@ -91,7 +90,13 @@ static NSString *CellIdentifier = @"Cell";
         ctrl5.title = @"长春";
         UIViewController * ctrl6 = [[NSClassFromString(@"FirstViewController") alloc] init];
         ctrl6.title = @"财经";
-        ContainerViewController *container = [ContainerViewController containerWithControllers:@[ctrl1, ctrl2, ctrl3, ctrl4, ctrl5, ctrl6] defalutControllerIndex:1];
+        UIViewController * ctrl7 = [[NSClassFromString(@"FirstViewController") alloc] init];
+        ctrl7.title = @"懂车帝";
+        UIViewController * ctrl8 = [[NSClassFromString(@"FirstViewController") alloc] init];
+        ctrl8.title = @"房产";
+        UIViewController * ctrl9 = [[NSClassFromString(@"FirstViewController") alloc] init];
+        ctrl9.title = @"国际";
+        ContainerViewController *container = [ContainerViewController containerWithControllers:@[ctrl1, ctrl2, ctrl3, ctrl4, ctrl5, ctrl6, ctrl7, ctrl8, ctrl9] defalutControllerIndex:1];
         container.segmentControl.style = SegmentControlSliderWidthStyleTextWidth;
         container.segmentControl.sliderWidthStyle = SegmentControlSliderWidthStyleFullTextWidth;
         container.title = title;
@@ -134,12 +139,8 @@ static NSString *CellIdentifier = @"Cell";
         ScrollableDetailController *controller = [[ScrollableDetailController alloc] init];
         controller.title = title;
         [self.navigationController pushViewController:controller animated:YES];
-    }else if([title isEqualToString:@"网页交互"]){
-        LCWebBrowserViewController *controller = [[LCWebBrowserViewController alloc] init];
-        controller.title = title;
-        [self.navigationController pushViewController:controller animated:YES];
-    }else if([title isEqualToString:@"图片选取"]){
-        PickPhotoViewController *controller = [[PickPhotoViewController alloc] init];
+    }else if([title isEqualToString:@"新闻详情"]){
+        TopicDetailViewController *controller = [[TopicDetailViewController alloc] init];
         controller.title = title;
         [self.navigationController pushViewController:controller animated:YES];
     }

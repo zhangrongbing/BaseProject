@@ -12,17 +12,31 @@
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 
+#define kStatusBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height
+#define kNavBarHeight 44.0
+#define kSafeTop (kStatusBarHeight + kNavBarHeight)
+
 @interface UIView (Addition)
 
-@property (assign, nonatomic) CGFloat lc_x;
-@property (assign, nonatomic) CGFloat lc_y;
-@property (assign, nonatomic) CGFloat lc_w;
-@property (assign, nonatomic) CGFloat lc_h;
-@property (assign, nonatomic) CGFloat lc_b;
-@property (assign, nonatomic) CGFloat lc_r;
-@property (assign, nonatomic) CGSize lc_size;
-@property (assign, nonatomic) CGPoint lc_origin;
-@property (assign, nonatomic) CGPoint lc_center;
+@property (nonatomic, assign) CGFloat left;
+@property (nonatomic, assign) CGFloat right;
+@property (nonatomic, assign) CGFloat top;
+@property (nonatomic, assign) CGFloat bottom;
+
+@property (nonatomic, assign) CGFloat width;
+@property (nonatomic, assign) CGFloat height;
+
+@property (nonatomic, assign) CGFloat centerX;
+@property (nonatomic, assign) CGFloat centerY;
+
+@property (nonatomic, assign, readonly) CGPoint boundsCenter;
+@property (nonatomic, assign, readonly) CGFloat boundsCenterX;
+@property (nonatomic, assign, readonly) CGFloat boundsCenterY;
+
+@property (nonatomic, assign) CGPoint   origin;
+@property (nonatomic, assign) CGSize    size;
+
+@property (assign, nonatomic, readonly) CGRect safeTop_bounds;
 
 -(void)lc_setCornerRadius:(CGFloat)radius;
 -(void)lc_setCornerRadius:(CGFloat)corner roundingCorners:(UIRectCorner)roundingCorners;

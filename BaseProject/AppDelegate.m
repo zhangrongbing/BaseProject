@@ -16,6 +16,7 @@
 #import "AppDelegate+IntroducePageViews.h"
 #import "AppDelegate+ADs.h"
 #import "AppDelegate+Bugly.h"
+#import "BaseTabBarController.h"
 
 //@interface AppDelegate ()
 
@@ -37,6 +38,8 @@
     _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     ViewController* controller = [[ViewController alloc] init];
     BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:controller];
+//    BaseTabBarController *controller = [[BaseTabBarController alloc] init];
+    
     _window.rootViewController = nav;
     [_window makeKeyAndVisible];
     

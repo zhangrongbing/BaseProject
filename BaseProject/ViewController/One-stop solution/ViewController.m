@@ -115,6 +115,11 @@ static NSString *CellIdentifier = @"CellIdentifier";
 #pragma mark - Public
 -(void)initTalbeView{
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
+    UIRefreshControl *refreshCtrl = [[UIRefreshControl alloc] init];
+    refreshCtrl.tintColor = [UIColor redColor];
+    refreshCtrl.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉刷新"];
+    [refreshCtrl addTarget:self action:@selector(refreshTabView:) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refreshCtrl;
 }
 
 -(void)initTableData{
@@ -129,7 +134,8 @@ static NSString *CellIdentifier = @"CellIdentifier";
                                    @{@"单接口调用":@"APITableViewController"},
                                    @{@"多接口同时调用":@"MutableViewController"}]},
                        @{@"并发":@[@{@"NSOperation并发":@"OperationViewController"},
-                                 @{@"GCD":@"GCDViewController"}]},
+                                 @{@"GCD":@"GCDViewController"},
+                                 @{@"线程锁":@"ThreadLockViewController"}]},
                        @{@"传感器":@[@{@"传感器":@"SensorViewController"},
                                   @{@"语音提示":@"SpeechViewController"}]},
                        @{@"二维码":@[@{@"生成二维码":@"CreateQRCodeController"},
@@ -168,5 +174,9 @@ static NSString *CellIdentifier = @"CellIdentifier";
 -(void)pressLeftItem:(UIBarButtonItem*)item{
     AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     [appDelegate sendLocalNotification];
+}
+
+-(void)refreshTabView:(UIRefreshControl*)ctrl{
+    
 }
 @end

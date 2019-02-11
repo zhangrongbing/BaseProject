@@ -20,7 +20,7 @@
 
 -(void)operation:(BaseOperation *)operation baseModel:(BaseModel *)baseModel{
     [super operation:operation baseModel:baseModel];
-    self.model = [WeatherModel mj_objectWithKeyValues:baseModel.mapData];
+//    self.model = [WeatherModel mj_objectWithKeyValues:baseModel.mapData];
 }
 
 @end
