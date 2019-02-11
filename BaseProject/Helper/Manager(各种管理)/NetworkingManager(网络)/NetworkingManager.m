@@ -50,7 +50,7 @@ SINGLE_M(NetworkingManager);
         dispatch_once(&token, ^{
             [reachabilityManager startMonitoring];
             [reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-                
+                self.status = status;
             }];
         });
     }

@@ -65,7 +65,7 @@
         }];
         self.contentSize = CGSizeMake(contentWidth, size.height);
     }
-    self.slidewayView.frame = CGRectMake(0, size.height - 1, size.width, 1);
+    self.slidewayView.frame = CGRectMake(0, size.height - 1, self.contentSize.width, 1);
     if (self.sliderWidthStyle == SegmentControlSliderWidthStyleTextWidth) {
         UIButton *curBtn = [self.buttons objectAtIndex:self.curIndex];
         CGRect newFrame = [curBtn.titleLabel convertRect:curBtn.titleLabel.bounds toView:curBtn.superview];
@@ -139,31 +139,30 @@
     [button setSelected:YES];
     self.curButton = button;
     self.curIndex = index;
-    //是否滑出可见区域
-    CGFloat rightX = self.contentOffset.x + CGRectGetWidth(self.frame);//屏幕右侧的坐标点
-    CGFloat leftX = self.contentOffset.x;//屏幕左侧的坐标点
-    if (CGRectGetMaxX(self.curButton.frame) > rightX) {
-        CGFloat offsetX = CGRectGetMaxX(self.curButton.frame) - rightX;
-        CGPoint offset = self.contentOffset;
-        [self setContentOffset:CGPointMake(offset.x + offsetX, offset.y) animated:YES];
-    }else if(CGRectGetMinX(self.curButton.frame) < leftX){
-        CGFloat offsetX = leftX - CGRectGetMinX(self.curButton.frame);
-        CGPoint offset = self.contentOffset;
-        [self setContentOffset:CGPointMake(offset.x - offsetX, offset.y) animated:YES];
+    //设置标题居中
+    CGFloat offsetX = CGRectGetMidX(button.frame) - CGRectGetWidth(self.frame)/2.f;
+    if (offsetX < 0) {
+        offsetX = 0;
     }
+    //最大偏移量
+    CGFloat maxOffset = self.contentSize.width - CGRectGetWidth(self.frame);
+    if (offsetX > maxOffset) {
+        offsetX = maxOffset;
+    }
+    [self setContentOffset:CGPointMake(offsetX, 0) animated:YES];
+    
     self.userInteractionEnabled = NO;
     //控制滑块
     [UIView animateWithDuration:.3 animations:^{
         if (self.sliderWidthStyle == SegmentControlSliderWidthStyleTextWidth) {
-            CGRect titleLabelFrame = [self.curButton.titleLabel convertRect:self.curButton.titleLabel.bounds toView:self];
+            CGRect titleLabelFrame = [button.titleLabel convertRect:button.titleLabel.bounds toView:self];
             CGFloat sliderViewX = CGRectGetMinX(titleLabelFrame);
-            CGRect newFrame = self.sliderView.frame;
-            newFrame.origin.x = sliderViewX;
+            CGRect newFrame = CGRectMake(sliderViewX, 0, CGRectGetWidth(titleLabelFrame), 1);
             self.sliderView.frame = newFrame;
         }else if(self.sliderWidthStyle == SegmentControlSliderWidthStyleFullTextWidth){
             CGRect newFrame = self.sliderView.frame;
-            newFrame.origin.x = CGRectGetMinX(self.curButton.frame);
-            newFrame.size.width = CGRectGetWidth(self.curButton.frame);
+            newFrame.origin.x = CGRectGetMinX(button.frame);
+            newFrame.size.width = CGRectGetWidth(button.frame);
             self.sliderView.frame = newFrame;
         }
     } completion:^(BOOL finished) {
