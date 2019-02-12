@@ -46,8 +46,13 @@
 #if TARGET_IPHONE_SIMULATOR
     
 #else
-    [self registerBugly];
     [self registerAPNS:application];
+#endif
+
+#if DEBUG
+    [self registerBuglyForAppId:@"需要注册测试appid"];
+#else
+    [self registerBuglyForAppId:@"6aea5b9cf7"];
 #endif
     return YES;
 }

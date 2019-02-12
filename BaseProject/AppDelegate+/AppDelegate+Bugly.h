@@ -11,5 +11,5 @@
 
 @interface AppDelegate (Bugly)<BuglyDelegate>
 
--(void)registerBugly;
+-(void)registerBuglyForAppId:(NSString*) appId;
 @end

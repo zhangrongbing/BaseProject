@@ -28,8 +28,6 @@ printf("%s{行数: %d|方法:%s %s}%s\n",[dateStr UTF8String], __LINE__, [NSStri
 #define kApp_Version [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 //获取App build版本
 #define kApp_Build [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]
-//适配iPhoneX
-#define kStatusBarAndNavigationBarHeight IS_IphoneX?64:88
 
 #import "LanguageManager.h"//国际化
 #import "UIColor+Preference.h"//软件各种颜色

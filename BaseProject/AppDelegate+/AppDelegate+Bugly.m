@@ -7,20 +7,25 @@
 //
 
 #import "AppDelegate+Bugly.h"
+#import "UIDevice+Addition.h"
 
 @implementation AppDelegate (Bugly)
 
--(void)registerBugly{
+-(void)registerBuglyForAppId:(NSString*) appId{
+    NSString *uuid = [UIDevice currentDevice].identifierForVendor.UUIDString;
     // 异常上报
     BuglyConfig *config = [[BuglyConfig alloc] init];
+#if DEBUG
     config.debugMode = YES;
+#else
+#endif
     config.blockMonitorEnable = YES;
     config.version = kApp_Version;
     config.delegate = self;
     config.reportLogLevel = BuglyLogLevelWarn;
-    config.deviceIdentifier = @"deviceIdentifier";
-    config.channel = @"channel";
-    [Bugly startWithAppId:@"6aea5b9cf7" config:config];
+    config.deviceIdentifier = uuid;
+    config.channel = [NSString stringWithFormat:@"%@-%@",@"channel", uuid];
+    [Bugly startWithAppId:appId config:config];
 }
 
 #pragma mark - BuglyDelegate
