@@ -10,7 +10,7 @@
 
 @implementation UITextField (Addition)
 
--(BOOL) lc_checkCardNo{
+-(BOOL) _checkCardNo{
     NSString* cardNo = self.text;
     NSAssert(cardNo != nil, @"银行卡号不能为空");
     int oddsum = 0;     //奇数求和

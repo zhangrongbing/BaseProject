@@ -8,7 +8,7 @@
 
 #import "DataBaseManager.h"
 #import "FMDB.h"
-#import "MyConfig.h"
+#import "Client.h"
 
 @interface DataBaseManager()
 
@@ -47,7 +47,7 @@ SINGLE_M(DataBaseManager);
 
 -(void)insertHistoryKeywords:(NSString*)keywords{
     NSAssert(keywords, @"keywords is not nil");
-    [self insertHistoryKeywords:keywords userId:[MyConfig sharedInstance].user.userId];
+    [self insertHistoryKeywords:keywords userId:[Client sharedInstance].userModel.userId];
 }
 
 -(void)insertHistoryKeywords:(NSString*)keywords userId:(NSString*) userId{
@@ -80,7 +80,7 @@ SINGLE_M(DataBaseManager);
 }
 
 -(void)removeHistoryForCurrentUser{
-    NSString *userId = [MyConfig sharedInstance].user.userId;
+    NSString *userId = [Client sharedInstance].userModel.userId;
     [self removeHistoryForUserId:userId];
 }
 

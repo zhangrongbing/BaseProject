@@ -10,8 +10,8 @@
 
 @interface UISearchBar (Addition)
 
--(void)lc_cornerRadius:(CGFloat)cornerRadius;
+-(void)_cornerRadius:(CGFloat)cornerRadius;
 
--(void)lc_borderWidth:(CGFloat)width color:(UIColor*)color;
+-(void)_borderWidth:(CGFloat)width color:(UIColor*)color;
 
 @end

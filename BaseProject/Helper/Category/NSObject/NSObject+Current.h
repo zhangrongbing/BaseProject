@@ -14,10 +14,10 @@
 /**
  获取当前容器
  */
-+ (UIViewController *)lc_getCurrentVC;
++ (UIViewController *)_getCurrentVC;
 
 /**
  获取当前键盘
  */
-+ (UIView *)lc_findKeyboard;
++ (UIView *)_findKeyboard;
 @end

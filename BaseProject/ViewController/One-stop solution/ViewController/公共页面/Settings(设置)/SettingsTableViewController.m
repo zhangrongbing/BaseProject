@@ -16,7 +16,7 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "SettingNotificationViewController.h"
-#import "MyConfig.h"
+#import "Client.h"
 
 @interface SettingsTableViewController ()
 
@@ -139,7 +139,7 @@ static NSString *NotificationCellIdentifier = @"NotificationCellIdentifier";
         BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:controller];
         appDelegate.window.rootViewController = nav;
         [appDelegate.window makeKeyAndVisible];
-        [[MyConfig sharedInstance] clean];
+        [[Client sharedInstance] clean];
     }];
     [alert addAction:cancelAction];
     [alert addAction:confirmAction];

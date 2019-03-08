@@ -37,7 +37,7 @@
 #pragma mark - 浏览大图点击事件
 - (void)scanBigImageClick:(UITapGestureRecognizer *)tap {
     UIImageView *clickedImageView = (UIImageView *)tap.view;
-    [LCImageZoomHelp LC_imageZoomWithImageView:clickedImageView];
+    [LCImageZoomHelp _imageZoomWithImageView:clickedImageView];
 }
 
 #pragma mark 长按手势弹出警告视图确认

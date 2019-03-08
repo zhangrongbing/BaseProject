@@ -22,13 +22,65 @@ printf("%s{行数: %d|方法:%s %s}%s\n",[dateStr UTF8String], __LINE__, [NSStri
 #define DebugLog(...)
 #endif
 
+//线程-------------
+//GCD - 在Main线程上运行
+#define kMainThread(mainQueueBlock) dispatch_async(dispatch_get_main_queue(), mainQueueBlock);
+//GCD - 开启异步线程
+#define kGlobalThread(globalQueueBlock) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), globalQueueBlocl);
+
+//简单调用----------
 //获取App名称
 #define kApp_Name [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"]
 //获取App版本号
 #define kApp_Version [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 //获取App build版本
 #define kApp_Build [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]
-
+//加载图片
+#define kGetImage(imageName) [UIImage imageNamed:[NSString stringWithFormat:@"%@",imageName]]
+//弱引用
+#define kWeakSelf(type)  __weak typeof(type) weak##type = type
+//加载xib
+#define kLoadNib(nibName) [UINib nibWithNibName:nibName bundle:[NSBundle mainBundle]]
+//永久存储对象
+#define kSetUserDefaults(object, key)                                                                                      \
+({                                                                                                                                             \
+NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];                                                                         \
+[defaults setObject:object forKey:key];                                                                                                    \
+[defaults synchronize];                                                                                                                    \
+})
+//获取对象
+#define kGetUserDefaults(key) [[NSUserDefaults standardUserDefaults] objectForKey:key]
+//删除某一个对象
+#define kRemoveUserDefaults(key)                                         \
+({                                                                          \
+NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];       \
+[defaults removeObjectForKey:_key];                                     \
+[defaults synchronize];                                                 \
+})
+//清除 NSUserDefaults 保存的所有数据
+#define kRemoveAllUserDefaults  [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:[[NSBundle mainBundle] bundleIdentifier]]
+//获取沙盒 temp
+#define kPathTemp NSTemporaryDirectory()
+//获取沙盒 Document
+#define kPathDocument [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
+//获取沙盒 Cache
+#define kPathCache [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject]
+//Library/Caches 文件路径
+#define kFilePath ([[NSFileManager defaultManager] URLForDirectory:NSCachesDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil])
+//判空
+//字符串是否为空
+#define kISNullString(str) ([str isKindOfClass:[NSNull class]] || str == nil || [str length] < 1 ? YES : NO )
+//数组是否为空
+#define kISNullArray(array) (array == nil || [array isKindOfClass:[NSNull class]] || array.count == 0 ||[array isEqual:[NSNull null]])
+//字典是否为空
+#define kISNullDict(dic) (dic == nil || [dic isKindOfClass:[NSNull class]] || dic.allKeys == 0 || [dic isEqual:[NSNull null]])
+//是否是空对象
+#define kISNullObject(_object) (_object == nil \
+|| [_object isKindOfClass:[NSNull class]] \
+|| ([_object respondsToSelector:@selector(length)] && [(NSData *)_object length] == 0) \
+|| ([_object respondsToSelector:@selector(count)] && [(NSArray *)_object count] == 0))
+//判断对象是否为空,为空则返回默认值
+#define D_StringFix(_value,_default) ([_value isKindOfClass:[NSNull class]] || !_value || _value == nil || [_value isEqualToString:@"(null)"] || [_value isEqualToString:@"<null>"] || [_value isEqualToString:@""] || [_value length] == 0)?_default:_value
 #import "LanguageManager.h"//国际化
 #import "UIColor+Preference.h"//软件各种颜色
 #endif /* PrefixHeader_pch */

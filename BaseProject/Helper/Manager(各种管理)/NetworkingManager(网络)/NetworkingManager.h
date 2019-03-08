@@ -19,7 +19,10 @@ typedef void(^handler)(NSInteger state);
 @interface NetworkingManager : NSObject
 
 SINGLE_H(NetworkingManager);
+
 @property(nonatomic, assign) AFNetworkReachabilityStatus status;
+@property(nonatomic, strong) NSString* token;
+
 /**
  加入操作类，访问服务器
  

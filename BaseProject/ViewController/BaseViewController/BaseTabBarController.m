@@ -17,8 +17,11 @@
 
 -(instancetype)init{
     if (self = [super init]) {
-        ViewController *controller = [[ViewController alloc] init];
-        [self addChildViewController:controller title:@"首页" norImage:nil selImage:nil];
+        ViewController *controller1 = [[ViewController alloc] init];
+        ViewController *controller2 = [[ViewController alloc] init];
+        
+        [self addChildViewController:controller1 title:@"首页1" norImage:nil selImage:nil];
+        [self addChildViewController:controller2 title:@"首页2" norImage:nil selImage:nil];
     }
     return self;
 }
@@ -40,7 +43,6 @@
     [tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor], NSFontAttributeName:[UIFont systemFontOfSize:12.f]} forState:UIControlStateNormal];
     [tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blueColor], NSFontAttributeName:[UIFont systemFontOfSize:12.f]} forState:UIControlStateSelected];
     childController.tabBarItem = tabBarItem;
-    
     BaseNavigationController* navController = [[BaseNavigationController alloc] initWithRootViewController:childController];
     
     [self addChildViewController:navController];

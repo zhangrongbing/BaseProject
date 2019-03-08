@@ -10,7 +10,6 @@
 #import "ToastManager.h"
 #import "HudManager.h"
 #import "NetworkingManager.h"
-#import "MyConfig.h"
 
 @implementation BaseOperation
 
@@ -63,7 +62,7 @@
         [[HudManager sharedInstance] showHud:YES];
     }
     if (self.isShowLog) {
-        DebugLog(@"----------接口地址:%@----------\n***********传入参数***********token：%@\n%@\n", operation.action,[MyConfig sharedInstance].token, operation.params);
+        DebugLog(@"----------接口地址:%@----------\n***********传入参数***********token：%@\n%@\n", operation.action,[NetworkingManager sharedInstance].token, operation.params);
     }
 }
 //解析接口数据
@@ -77,7 +76,7 @@
 }
 
 -(NSMutableDictionary*)headerKeyValues{
-    NSString *token = [MyConfig sharedInstance].token;
+    NSString *token = [NetworkingManager sharedInstance].token;
     if (token) {
         return @{@"token":token}.mutableCopy;
     }

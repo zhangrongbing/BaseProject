@@ -15,6 +15,6 @@
 
  @return 是否符合
  */
--(BOOL) lc_checkCardNo;
+-(BOOL) _checkCardNo;
 
 @end

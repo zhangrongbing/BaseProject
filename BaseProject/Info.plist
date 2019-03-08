@@ -58,6 +58,17 @@
 	<string>App想要保存照片</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>App需要访问您的相册用来存储二维码图片</string>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string></string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>分享</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.shortcutItem.share</string>
+		</dict>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
@@ -87,16 +98,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
-	<key>UIApplicationShortcutItems</key>
-	<array>
-		<dict>
-			<key>UIApplicationShortcutItemType</key>
-			<string>com.shortcutItem.share</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>分享</string>
-			<key>UIApplicationShortcutItemIconFile</key>
-			<string></string>
-		</dict>
-	</array>
 </dict>
 </plist>

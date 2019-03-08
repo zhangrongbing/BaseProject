@@ -10,7 +10,7 @@
 
 @implementation UISearchBar (Addition)
 
--(void)lc_cornerRadius:(CGFloat)cornerRadius{
+-(void)_cornerRadius:(CGFloat)cornerRadius{
     for (UIView *view in self.subviews.lastObject.subviews) {
         if([view isKindOfClass:NSClassFromString(@"UISearchBarTextField")]) {
             UITextField *textField = (UITextField *)view;
@@ -24,7 +24,7 @@
     }
 }
 
--(void)lc_borderWidth:(CGFloat)width color:(UIColor*)color{
+-(void)_borderWidth:(CGFloat)width color:(UIColor*)color{
     for (UIView *view in self.subviews.lastObject.subviews) {
         if([view isKindOfClass:NSClassFromString(@"UISearchBarTextField")]) {
             UITextField *textField = (UITextField *)view;

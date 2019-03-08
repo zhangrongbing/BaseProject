@@ -38,7 +38,7 @@
 
 @property (assign, nonatomic, readonly) CGRect safeTop_bounds;
 
--(void)lc_setCornerRadius:(CGFloat)radius;
--(void)lc_setCornerRadius:(CGFloat)corner roundingCorners:(UIRectCorner)roundingCorners;
--(NSArray*)lc_allSubviewsForView:(UIView*)view;
+-(void)_setCornerRadius:(CGFloat)radius;
+-(void)_setCornerRadius:(CGFloat)corner roundingCorners:(UIRectCorner)roundingCorners;
+-(NSArray*)_allSubviewsForView:(UIView*)view;
 @end

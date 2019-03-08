@@ -84,8 +84,8 @@ typedef enum : NSUInteger {
 
 @interface UIViewController (PrensentAnimation)
 
-- (void)lc_presentViewController:(UIViewController *_Nullable)viewControllerToPresent animationType:(KPrensentAnimationType)animationType direction:(KPrensentAnimationDirection)direction completion:(void (^ __nullable)(void))completion;
+- (void)_presentViewController:(UIViewController *_Nullable)viewControllerToPresent animationType:(KPrensentAnimationType)animationType direction:(KPrensentAnimationDirection)direction completion:(void (^ __nullable)(void))completion;
 
-- (void)lc_dismissViewControllerAnimationType:(KPrensentAnimationType)animationType direction:(KPrensentAnimationDirection)direction completion: (void (^ __nullable)(void))completion;
+- (void)_dismissViewControllerAnimationType:(KPrensentAnimationType)animationType direction:(KPrensentAnimationDirection)direction completion: (void (^ __nullable)(void))completion;
 
 @end

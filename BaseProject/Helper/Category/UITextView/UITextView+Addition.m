@@ -10,7 +10,7 @@
 
 @implementation UITextView (Addition)
 
--(void)lc_placeholder:(NSString*)placeholder{
+-(void)_placeholder:(NSString*)placeholder{
     UILabel *placeHolderLabel = [[UILabel alloc] init];
     placeHolderLabel.text = placeholder;
     placeHolderLabel.numberOfLines = 0;

@@ -10,8 +10,8 @@
 
 @interface UITextField (LCWordLimit)
 
-- (void)lc_wordLimit:(NSInteger)count;
+- (void)_wordLimit:(NSInteger)count;
 
-@property (nonatomic, copy, readonly) NSString *lc_maxLength;//限制字数
+@property (nonatomic, copy, readonly) NSString *_maxLength;//限制字数
 
 @end

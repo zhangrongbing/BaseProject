@@ -10,7 +10,7 @@
 
 @implementation UIColor (Addition)
 
--(UIColor*)lc_toColor:(UIColor*)color ratio:(CGFloat)ratio{
+-(UIColor*)_toColor:(UIColor*)color ratio:(CGFloat)ratio{
     if (ratio > 1)
         ratio = 1;
     if (ratio < 0)
@@ -26,7 +26,7 @@
     return [UIColor colorWithRed:r green:g blue:b alpha:1];
 }
 
-+(UIColor*)lc_colorWithRGB:(NSString*)rgbStr alpha:(float) alpha{
++(UIColor*)_colorWithRGB:(NSString*)rgbStr alpha:(float) alpha{
     if (rgbStr && rgbStr.length == 6 && alpha >= 0) {
         long red = strtoul([[rgbStr substringWithRange:NSMakeRange(0, 2)] UTF8String], 0, 16);
         long green = strtoul([[rgbStr substringWithRange:NSMakeRange(2, 2)] UTF8String], 0, 16);
@@ -41,7 +41,7 @@
     return [UIColor clearColor];
 }
 
-+(UIColor*)lc_randomColor{
++(UIColor*)_randomColor{
     return [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1];
 }
 

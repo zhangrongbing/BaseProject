@@ -123,12 +123,12 @@
     self.frame = frame;
 }
 
--(void)lc_setCornerRadius:(CGFloat)radius{
+-(void)_setCornerRadius:(CGFloat)radius{
     [self.layer setMasksToBounds:YES];
     [self.layer setCornerRadius:radius];
 }
 
--(void)lc_setCornerRadius:(CGFloat)corner roundingCorners:(UIRectCorner)roundingCorners{
+-(void)_setCornerRadius:(CGFloat)corner roundingCorners:(UIRectCorner)roundingCorners{
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:roundingCorners cornerRadii:CGSizeMake(corner, corner)];
     CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
     maskLayer.frame = self.bounds;
@@ -137,11 +137,11 @@
 }
 
 
--(NSArray*)lc_allSubviewsForView:(UIView*)view{
+-(NSArray*)_allSubviewsForView:(UIView*)view{
     NSMutableArray *subViews = @[].mutableCopy;
     [view.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (obj.subviews.count > 0) {
-            [self lc_allSubviewsForView:obj];
+            [self _allSubviewsForView:obj];
         }
         [subViews addObject:obj];
     }];

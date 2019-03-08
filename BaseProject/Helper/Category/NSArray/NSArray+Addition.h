@@ -18,7 +18,7 @@
 
  @return 字符串
  */
--(NSString*)lc_stringBySeparator:(NSString*)separator;
+-(NSString*)_stringBySeparator:(NSString*)separator;
 
 /**
  复杂类型数组，根据数组里面的model的key值来组成一个字符串
@@ -28,7 +28,7 @@
 
  @return 字符串
  */
--(NSString*)lc_stringByKey:(NSString*)key separator:(NSString*)separator;
+-(NSString*)_stringByKey:(NSString*)key separator:(NSString*)separator;
 
 /**
  复杂类型数组，根据数组里面的model的key值来组成一个新的集合
@@ -37,13 +37,13 @@
 
  @return 复杂类型对象对应key值 生成的数组
  */
--(NSArray*)lc_arrayByKey:(NSString *)key;
+-(NSArray*)_arrayByKey:(NSString *)key;
 
 
 @end
 
 @interface NSMutableArray(Addition)
 
--(void)lc_removeObjectByKey:(NSString*)key value:(NSString*)value;
+-(void)_removeObjectByKey:(NSString*)key value:(NSString*)value;
 
 @end

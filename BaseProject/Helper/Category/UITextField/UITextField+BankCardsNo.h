@@ -10,6 +10,6 @@
 
 @interface UITextField (BankCardsNo)<UITextFieldDelegate>
 
--(void)lc_bankCardsNo;
+-(void)_bankCardsNo;
 
 @end

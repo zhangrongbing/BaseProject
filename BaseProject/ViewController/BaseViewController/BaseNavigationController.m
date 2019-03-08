@@ -62,6 +62,7 @@
         leftButton.imageEdgeInsets = UIEdgeInsetsMake(0, -8, 0, 8);
         UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
         viewController.navigationItem.leftBarButtonItem = leftItem;
+        viewController.hidesBottomBarWhenPushed = YES;
         [leftButton addTarget:self action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
     }
     [super pushViewController:viewController animated:animated];

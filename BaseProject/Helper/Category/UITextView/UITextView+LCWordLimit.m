@@ -14,22 +14,22 @@ static const void *lcCountKey = &lcCountKey;
 @implementation UITextView (LCWordLimit)
 
 
-- (void)lc_wordLimit:(NSInteger)count {
-    self.lc_maxLength = [NSString stringWithFormat:@"%ld",(long)count];
+- (void)_wordLimit:(NSInteger)count {
+    self._maxLength = [NSString stringWithFormat:@"%ld",(long)count];
     self.delegate = self;
 }
 
-- (NSString *)lc_maxLength {
+- (NSString *)_maxLength {
     return objc_getAssociatedObject(self, &lcCountKey);
 }
 
-- (void)setLc_maxLength:(NSString *)lc_count {
-    objc_setAssociatedObject(self, &lcCountKey, lc_count, OBJC_ASSOCIATION_COPY_NONATOMIC);
+- (void)set_maxLength:(NSString *)_count {
+    objc_setAssociatedObject(self, &lcCountKey, _count, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 - (void)textViewDidChange:(UITextView *)textView{
     //数字限制
-    NSInteger maximumNumberOfText = [self.lc_maxLength integerValue];
+    NSInteger maximumNumberOfText = [self._maxLength integerValue];
     NSString* string = self.text;
     NSString* lang = [self.textInputMode primaryLanguage];
     if ([lang isEqualToString:@"zh-Hans"]) {//中文输入

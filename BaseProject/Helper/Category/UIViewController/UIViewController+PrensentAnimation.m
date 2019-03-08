@@ -10,14 +10,14 @@
 
 @implementation UIViewController (PrensentAnimation)
 
-- (void)lc_presentViewController:(UIViewController *)viewControllerToPresent animationType:(KPrensentAnimationType)animationType direction:(KPrensentAnimationDirection)direction completion:(void (^)(void))completion {
+- (void)_presentViewController:(UIViewController *)viewControllerToPresent animationType:(KPrensentAnimationType)animationType direction:(KPrensentAnimationDirection)direction completion:(void (^)(void))completion {
     [self animationType:animationType direction:direction];
     
     [self presentViewController:viewControllerToPresent animated:NO completion:completion];
     
 }
 
-- (void)lc_dismissViewControllerAnimationType:(KPrensentAnimationType)animationType direction:(KPrensentAnimationDirection)direction completion:(void (^)(void))completion {
+- (void)_dismissViewControllerAnimationType:(KPrensentAnimationType)animationType direction:(KPrensentAnimationDirection)direction completion:(void (^)(void))completion {
     [self animationType:animationType direction:direction];
     
     [self dismissViewControllerAnimated:NO completion:completion];

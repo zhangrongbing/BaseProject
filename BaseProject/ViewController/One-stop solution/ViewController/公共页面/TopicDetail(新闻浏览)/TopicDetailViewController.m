@@ -31,7 +31,7 @@
     [super viewDidLoad];
     [self initView];
     [self addObservers];
-    
+    [self showLoadingView];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:kUrl_JianShu]];
     request.cachePolicy = NSURLRequestReloadIgnoringCacheData;
     [self.webView loadRequest:request];

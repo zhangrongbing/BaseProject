@@ -50,7 +50,7 @@ static NSString *CellIdentifier = @"Cell";
     
     float percent = 1 - MAX(130 - offsetY, 0)/130.1f;
     UIColor *color = RGBA(0xFF0000, percent);
-    UIImage *image = [UIImage lc_imageWithColor:color];
+    UIImage *image = [UIImage _imageWithColor:color];
     [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
 }
 #pragma mark - Getter and Setter

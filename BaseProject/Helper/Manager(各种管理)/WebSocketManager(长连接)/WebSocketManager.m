@@ -10,7 +10,6 @@
 
 #import "AFNetworking.h"
 #import "SocketRocket.h"
-#import "MyConfig.h"
 #import "NSString+Addition.h"
 #import "Constant.h"
 
@@ -54,9 +53,10 @@ SINGLE_M(WebSocketManager);
 -(SRWebSocket*)webSocket{
     if (!_webSocket) {
         NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:kLongConnection]];
-        NSString* token = [MyConfig sharedInstance].token;
-        [request setValue:token forHTTPHeaderField:@"token"];
-        [request setValue:@"2" forHTTPHeaderField:@"userType"];
+        NSString* token = kGetUserDefaults(@"token");
+        if (token) {
+            [request setValue:token forHTTPHeaderField:@"token"];
+        }
         _webSocket = [[SRWebSocket alloc] initWithURLRequest:request];
         _webSocket.delegate = self;
     }

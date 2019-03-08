@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "NSObject+Single.h"
 
+#define Localizable_Name @"Localizable"
+#define Localizable_zh_Hans @"zh-Hans"
+#define Localizable_en @"en"
+
 #define LCGetStringWithKeyFromTable(key, tbl) [[LanguageManager sharedInstance] getStringForKey:key withTable:tbl]
 
 @class LanguageManager;

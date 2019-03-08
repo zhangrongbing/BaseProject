@@ -11,6 +11,7 @@
 #import "IPManager.h"
 #import <UserNotifications/UserNotifications.h>
 #import "AppDelegate+RemoteNotification.h"
+#import "Masonry.h"
 
 @interface ViewController ()
 
@@ -90,13 +91,21 @@ static NSString *CellIdentifier = @"CellIdentifier";
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UILabel *label = [[UILabel alloc] init];
-    label.backgroundColor = RGB(0xE4F1FD);
     label.font = [UIFont systemFontOfSize:14];
     label.textColor = RGB(0x297FCA);
     label.text = [[self.tableData objectAtIndex:section] allKeys].firstObject;
     label.numberOfLines = 1;
     [label sizeToFit];
-    return label;
+    
+    UIView *view = [[UIView alloc] init];
+    view.backgroundColor = RGB(0xE4F1FD);
+    [view addSubview:label];
+    //布局
+    UIEdgeInsets padding = UIEdgeInsetsMake(0, 10, 0, 10);
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(view).insets(padding);
+    }];
+    return view;
 }
 
 #pragma mark - UITableViewDelegate
@@ -115,11 +124,6 @@ static NSString *CellIdentifier = @"CellIdentifier";
 #pragma mark - Public
 -(void)initTalbeView{
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
-    UIRefreshControl *refreshCtrl = [[UIRefreshControl alloc] init];
-    refreshCtrl.tintColor = [UIColor redColor];
-    refreshCtrl.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉刷新"];
-    [refreshCtrl addTarget:self action:@selector(refreshTabView:) forControlEvents:UIControlEventValueChanged];
-    self.refreshControl = refreshCtrl;
 }
 
 -(void)initTableData{
@@ -177,6 +181,5 @@ static NSString *CellIdentifier = @"CellIdentifier";
 }
 
 -(void)refreshTabView:(UIRefreshControl*)ctrl{
-    
 }
 @end

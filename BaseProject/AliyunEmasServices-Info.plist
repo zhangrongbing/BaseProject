@@ -5,19 +5,19 @@
 	<key>config</key>
 	<dict>
             <key>emas.appKey</key>
-            <string>25546104</string>
+            <string>25786647</string>
             <key>emas.appSecret</key>
-            <string>60366e0322564905bc485d675a6d42e4</string>
+            <string>716d8554c59431e1a0507d6c6bea7b18</string>
             <key>emas.bundleId</key>
-            <string>com.demo.BaseProject</string>
+            <string>com.lovcreate.base.BaseProject</string>
             <key>hotfix.idSecret</key>
-            <string>25546104-2</string>
+            <string>25786647-2</string>
             <key>hotfix.rsaSecret</key>
-            <string>MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCCl+NL/NCmbmthW+FpvRcPdMv3Mw+bqTpgDb2T/nyBAmms88U0O3oXOb1766xE7LwilZAKSz4dC/G6SCtDylwJ9HiODnYKtyUDtUuV+lLHRKvR+wl1bOZ6lb95Ao9aogcMwOnx/wO2CB8mY4W/f7GZmfnZnByZuFAgO2ShfrMeiZiCExpeMEuikfE7NtRQaZ7ADHSQDSqOzW18Hj9/qlmq6EZyRFCB24SCAs96IF9V8bt9wmrKGEtGa5HSG7oaVI1me73Vmlq5/hRQQL3svAzkeqzG3spV/MMMDqESaRfIbLHZOGoIHz5l8uHsaZe3O9GzrrTR7EHKUV7EqHrzsmdHAgMBAAECggEAEDXYYgtMvwv/ykMEdQKixSljVBkDe/gCpf+uo5s4Sy9IfM55kSU833ssWSCE7r1QER7tlUmHuUVNSSlCLZUF3bp56HBFGMlpD8/GRSSgd9m/Vj5KC0hsR5UlAlleAAsSwvODVqWoCUVy0GoUJRQtsHpbeDaXmkE1uPqGYEGA7G5MLwGwfpC0apAs0xnD2zwmlJv/+5WMgEQBoHm5lOSbpqrLSbKyCB/s3H1Pzul1HLnEjlTGWnRXnKVbw9g/TNlH0Zw4/6Z1U7A2lyTmUvyK4aP1DecltI3y/UiBOIOxajFE21RWUSNqRyg0fGqmwowRKJX+3u6dXTQFzmwCpWQP0QKBgQDRc6RlzE6zSWiWOzhAv8/xphAHcbOBRtyJAerw4046pxMHX/DVrrWXY+ALrGC9Mby3c3qK33lrI6a8x0ebx5YJeHO+1Jrb1qQTzRF9gA6a6x6wfNV4WaUzClAvK9nyoGwyOFTwyWiZ3PikXygvdf2WSLi0sMSnr7DS9oMXNg1O6QKBgQCfnb7/lXZhhVtY8iEpg7KjCftGVJYEGzUm7LR0Ml3NqLdiPQet969aBMw/T/VxzKH74vcyvE7Q/+b2jOOw5xITboSH9fgyEVeaAbzAuiB36nrFka9U08oXqYVYKI1illeSVWt+XAT8wYsigBjeooTjoV2tJew18ayBB2TUMsAGrwKBgEuS/WuZx3/bafhjD84VJ9PahogZF5r61ZI99ebLLavuIuiTTpPbgTxJ1kp//Tvm2WAcM8guEGJ/L6eIBCeKYXGzW5gsoF/YV8WpRblR3nM5iQ5HTMMrHXeILhyHJxHrnn6UYtmq4qo52CF/EEHnwgNa5AKWka6rrxK/zdcvMqgZAoGAFlkn3PE4Wf8qAxIjwoRGBr3nCLnfJ0QH9SM/QOWsbJcq1f5ljN4ZFymEz3iKjRxxsardoaTsBCdQV0TyvFoeFcprk/3Een4jHdUQcIue8CtMdU0ol1/v89Awc196LEuQh1SecFrB+AHBUVtOIB3xLU3yp8Ofhw4HcSlv3KYebNECgYAq45ddLtVsif4aaDCyK3+ZNzwE/bz7g6Wp8MqUOBLLNymhUoKJB4PU/t+H2h54AqQckwR5EFIANtYzKflY4V3NVz+MklSOXuc2Ba76FZNEotTbdIoklMarSLtRWhlCeywVBaRIX9vUafNeJoj6VrNlQdas+kRClxqkRmlJTRZZHg==</string>
+            <string>MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCkTOJgZwRC0Kg/Vb+aBX+GntIMvPy9sNdXCHOeeEY/EXwffK+S20mKdopq43f/hDMAwrGBhu0jeCbNZzLmdYfKHRSLGONKZlJAJ0hu24KmCwkwLwJgMd65GKyIsNZawE1U8NtPrWPszOOutjt1nAbzfB4n2R/ae8c/lZ9gXgCd0wRz1Qkv9oqoyegvXrXbaQEFDAjDAkqeIo/HRMNCDimUQ58OkHc5Qn7/+rZu0T7wRXJyytFBPrxEj0j7n3jtw+yKuBX+kAv4osBN1aY94U8i8+RS91Y1ARI7EeDS+D59Dm8bAEzYq+TUm2G3GmYvba2EeFzbSBruzJPtif8QlpL9AgMBAAECggEAI736DUC745Ei2MxdpzMFABMy3MSMMvPylKNpC5NcrMGv/+WPCGKeB/oruH8Njs+CjOrN1MC2e93aixqlLw9oX+adnnjmkTvbLsuc7Ujhjh+eexXu7WBL9HZSqlXV+94TtKPFAftVXqFf8pUAMGCl/ngE02RfkpcUzFdPWZZ5iduRbL9huHSxnLWuR3umNtzXNZAf6qV8n2vnYgpLyhrljkF+TXGLy5ZEEoZYvchfvgjw83SDFUswyNfIv4w/YfxOtTNJhzCqrq2DfznExOnR37h0KUP0TjKS5r7p73ULLXbTVvy6XNCzjmSE5wysBYtN2k4dJh983ytrk6fFc10pPQKBgQDf1SM0OU9ETdoM9WW+iartArylZhiUF2VScRbpPr9quUGst2DiDlitt4EU/ln7xhRoSuUCaxDaD8HFynaRmv52kfB1SUqtEBv7XkQ6M3twwhHByT4+qadRv9oH6wpLMCbLmFstJm3aXzLN1SonXD1uD2dngeYNj0jlT4Ug1o9XfwKBgQC76YoDy7+2O32VgACoH64PXn2d0GrP/V2b5PjCLZBc+V7XaFYvGlIhbMZaK1U1S50QU1xvJvDZdgbs6Vp7S5guWpGaTqFl4xUM2snAGUp4s4wcAcsXeEPzj4ehxiwjjqj1H8cN9r5iY06ymGFHGU0YoBJZzyneIwPbc8ewlHGzgwKBgQCmvAtsVKCSfffHHWn8JGr6AMbr4oC+mCr23Z02hHJsmrGsajG2Uv+F8CMss0fugCAljFzJj13PQluS7f2i+zVAt/fKNp11C4H8nrzuKflzBm3Z0AIZBaHJCMPukAxr8+OCV+zbVjwQpkefAoJTLafo+3qIpT/sq+aeQr0luA6xGwKBgB3SjZ3Wm0FvpZmxa+lCxdwYkfUW26zQuCeCqlwe4RdwWDX1kB//nGNDoSM0V1yS+IVbxYK6emT4z1aQHlUNBUTuCMeljQXfiTq2CmjbWq9XR3g2bKX350jjUZJCIkUuYfAtL+kubL6uphHAD0g6YrryxJbOQwXHJtiQQnPqyzTDAoGBAKFE4idR1XF162EY8owobmKztbMgsvx3o7czSMhsiNb2JNlVhAYckAvFS/2++S14O7JiRGsG/NDTft9Ru+7pHN3cgzQwgJhxXd9V++iWSPuuAzd/2aZpfV1xqt6Vltoa9DrkEcRk+oaUFNCiBTSby4UaFlhh3nXSJb3y0tzesW86</string>
             <key>httpdns.accountId</key>
-            <string>166172</string>
+            <string>199314</string>
             <key>httpdns.secretKey</key>
-            <string>5cdc33cbb68e6bae780d2a8135ef01b8</string>
+            <string>2c40f343c6e8fb2d0013422e12ffd8dc</string>
     	</dict>
 	<key>services</key>
 	<dict>
@@ -26,7 +26,7 @@
 			<key>status</key>
 			<integer>1</integer>
 			<key>version</key>
-			<string>1.6.20</string>
+			<string>1.7.0_RC_01</string>
 		</dict>
 		<key>cps_service</key>
 		<dict>

@@ -13,7 +13,6 @@
 #import "BaseModel.h"
 #import "ToastManager.h"
 #import "Constant.h"
-#import "MyConfig.h"
 #import "AFNetworkReachabilityManager.h"
 
 static NSInteger kunLoginState = -1;
@@ -43,7 +42,7 @@ SINGLE_M(NetworkingManager);
         self.manager.securityPolicy.allowInvalidCertificates = isDebug;
         self.manager.responseSerializer = [AFHTTPResponseSerializer serializer];
         self.manager.requestSerializer.timeoutInterval = 6.f;
-        [self.manager.requestSerializer setValue:[MyConfig sharedInstance].token forHTTPHeaderField:@"token"];
+        [self.manager.requestSerializer setValue:self.token forHTTPHeaderField:@"token"];
         
         AFNetworkReachabilityManager *reachabilityManager = [AFNetworkReachabilityManager sharedManager];
         static dispatch_once_t token;
@@ -175,6 +174,17 @@ SINGLE_M(NetworkingManager);
     return msg;
 }
 
+-(void)setToken:(NSString *)token{
+    kSetUserDefaults(token, @"token");
+}
+
+-(NSString*)token{
+    NSString *token = kGetUserDefaults(@"token");
+    if (kISNullString(token)) {
+        return @"";
+    }
+    return token;
+}
 
 @end
 

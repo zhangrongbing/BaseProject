@@ -98,8 +98,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHiden:) name:UIKeyboardWillHideNotification object:nil];
     UIButton *loginBtn = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetWidth(operatorView.frame)*2/3.f, 0, CGRectGetWidth(operatorView.frame)/3.f, CGRectGetHeight(operatorView.frame))];
     [loginBtn addTarget:self action:@selector(pressLoginButton:) forControlEvents:UIControlEventTouchUpInside];
-    UIImage *disableColorImage = [UIImage lc_imageWithColor:[UIColor lightGrayColor] size:loginBtn.frame.size];
-    UIImage *normalColorImage = [UIImage lc_imageWithColor:[UIColor greenColor] size:loginBtn.frame.size];
+    UIImage *disableColorImage = [UIImage _imageWithColor:[UIColor lightGrayColor] size:loginBtn.frame.size];
+    UIImage *normalColorImage = [UIImage _imageWithColor:[UIColor greenColor] size:loginBtn.frame.size];
     [loginBtn setBackgroundImage:disableColorImage forState:UIControlStateDisabled];
     [loginBtn setBackgroundImage:normalColorImage forState:UIControlStateNormal];
     [loginBtn setTitle:LCGetStringWithKeyFromTable(@"登录", nil) forState:UIControlStateNormal];

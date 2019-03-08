@@ -16,9 +16,9 @@
 
 @interface UIColor (Addition)
 
--(UIColor*)lc_toColor:(UIColor*)color ratio:(CGFloat)ratio;
+-(UIColor*)_toColor:(UIColor*)color ratio:(CGFloat)ratio;
 
-+(UIColor*)lc_colorWithRGB:(NSString*)rgbStr alpha:(float) alpha;
++(UIColor*)_colorWithRGB:(NSString*)rgbStr alpha:(float) alpha;
 
-+(UIColor*)lc_randomColor;
++(UIColor*)_randomColor;
 @end

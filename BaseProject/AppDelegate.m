@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "MyConfig.h"
 #import "ViewController.h"
 #import "BaseNavigationController.h"
 #import "AppDelegate+RemoteNotification.h"
@@ -16,7 +15,6 @@
 #import "AppDelegate+IntroducePageViews.h"
 #import "AppDelegate+ADs.h"
 #import "AppDelegate+Bugly.h"
-#import "BaseTabBarController.h"
 
 //@interface AppDelegate ()
 
@@ -30,16 +28,10 @@
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    //配置全局变量
-    MyConfig* config = [MyConfig sharedInstance];
-    [config configGlobalApperance];
-    
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    ViewController* controller = [[ViewController alloc] init];
+    ViewController *controller = [[ViewController alloc] init];
     BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:controller];
-//    BaseTabBarController *controller = [[BaseTabBarController alloc] init];
-    
     _window.rootViewController = nav;
     [_window makeKeyAndVisible];
     
@@ -54,6 +46,7 @@
 #else
     [self registerBuglyForAppId:@"6aea5b9cf7"];
 #endif
+    [self configGlobalApperance];
     return YES;
 }
 
@@ -62,4 +55,13 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application {DebugLog(@"");}
 - (void)applicationDidBecomeActive:(UIApplication *)application {DebugLog(@"");}
 - (void)applicationWillTerminate:(UIApplication *)application {DebugLog(@"");}
+
+-(void)configGlobalApperance{
+    //APP样式
+    [UITableView appearance].keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+    [UITableView appearance].separatorColor = [UIColor tableViewSeparatorColor];
+    
+    [UITabBar appearance].translucent = NO;
+}
+
 @end

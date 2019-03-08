@@ -53,7 +53,7 @@ static NSString *CellIdentifier = @"Cell";
     NSString *str = [self.tableSource objectAtIndex:indexPath.row];
     if ([str isEqualToString:@"效果一"]) {
         LoginOneViewController *controller = [[LoginOneViewController alloc] init];
-        [self lc_presentViewController:controller animationType:KPrensentAnimationTypePush direction:KPrensentAnimationDirectionBottom completion:nil];
+        [self _presentViewController:controller animationType:KPrensentAnimationTypePush direction:KPrensentAnimationDirectionBottom completion:nil];
 //        [self presentViewController:controller animated:YES completion:nil];
     }else if ([str isEqualToString:@"效果二"]){
         LoginTwoViewController *controller = [[LoginTwoViewController alloc] init];

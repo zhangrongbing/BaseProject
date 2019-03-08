@@ -18,7 +18,7 @@
 
  @return 经过模糊处理的图片
  */
--(UIImage*)lc_blurImage:(float) value;
+-(UIImage*)_blurImage:(float) value;
 
 
 /**
@@ -28,7 +28,7 @@
 
  @return gif图片
  */
-+ (UIImage *)lc_animatedGIFWithData:(NSData *)data;
++ (UIImage *)_animatedGIFWithData:(NSData *)data;
 
 
 /**
@@ -38,7 +38,7 @@
 
  @return 返回纯色的UIImage
  */
-+(UIImage*)lc_imageWithColor:(UIColor*)color;
++(UIImage*)_imageWithColor:(UIColor*)color;
 
 /**
  生成纯色的UIImage
@@ -48,7 +48,7 @@
 
  @return 返回纯色的UIImage
  */
-+(UIImage*)lc_imageWithColor:(UIColor *)color size:(CGSize)size;
++(UIImage*)_imageWithColor:(UIColor *)color size:(CGSize)size;
 
 /**
 图片转base64字符串
@@ -57,7 +57,7 @@
 
  @return base64字符串
  */
-+(NSString *)lc_base64StringForImage:(UIImage *) image;
++(NSString *)_base64StringForImage:(UIImage *) image;
 
 
 /**
@@ -67,7 +67,7 @@
 
  @return 图片
  */
-+(UIImage *)lc_imageForBase64String:(NSString *)base64String;
++(UIImage *)_imageForBase64String:(NSString *)base64String;
 
 /**
  截屏
@@ -75,7 +75,7 @@
  @param controller 目标控制器
  @return 图片对象
  */
-+ (UIImage*)lc_screenShot:(UIViewController*)controller;
++ (UIImage*)_screenShot:(UIViewController*)controller;
 
 /**
   UIView转UIimage
@@ -83,5 +83,13 @@
  @param view 视图
  @return UIImage 对象
  */
-+(UIImage*)lc_imageWithView:(UIView*)view;
++(UIImage*)_imageWithView:(UIView*)view;
+
+/**
+ 给图片加圆角
+ 
+ @param radius 圆角半径
+ @return 处理后的图片
+ */
+-(UIImage*)_roundedCornerImageWithCornerRadius:(CGFloat)radius;
 @end

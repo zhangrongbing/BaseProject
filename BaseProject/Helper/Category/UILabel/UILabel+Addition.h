@@ -10,8 +10,8 @@
 
 @interface UILabel (Addition)
 
-- (CGFloat)lc_textWith;
+- (CGFloat)_textWith;
 
-//-(void)lc_
+//-(void)_
 
 @end

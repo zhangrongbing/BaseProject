@@ -19,7 +19,7 @@
     return strM;
 }
 
--(NSString*)lc_stringBySeparator:(NSString*)separator{
+-(NSString*)_stringBySeparator:(NSString*)separator{
     NSString* str = @"";
     for (NSString* s in self) {
         NSString* tempStr = [s stringByAppendingString:separator];
@@ -31,7 +31,7 @@
     return str;
 }
 
--(NSString*)lc_stringByKey:(NSString*)key separator:(NSString*)separator{
+-(NSString*)_stringByKey:(NSString*)key separator:(NSString*)separator{
     NSString* str = @"";
     for (int i = 0; i < self.count; i++) {
         str = [str stringByAppendingString:[[self objectAtIndex:i] valueForKey:key]];
@@ -43,7 +43,7 @@
     return str;
 }
 
--(NSArray*)lc_arrayByKey:(NSString *)key{
+-(NSArray*)_arrayByKey:(NSString *)key{
     NSMutableArray* data = @[].mutableCopy;
     for (id m in self) {
         [data addObject:[m valueForKey:key]];
@@ -55,7 +55,7 @@
 
 @implementation NSMutableArray(Addition)
 
--(void)lc_removeObjectByKey:(NSString*)key value:(NSString*)value{
+-(void)_removeObjectByKey:(NSString*)key value:(NSString*)value{
     NSPredicate* predicate = [NSPredicate predicateWithFormat:@"SELF.%@=%@",key, value];
     
     NSArray* tempArr = [self filteredArrayUsingPredicate:predicate];

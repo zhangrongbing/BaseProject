@@ -26,7 +26,7 @@
  @param string 字符串
  @return 字典
  */
--(NSDictionary*)lc_dictionaryWithString:(NSString*)string;
+-(NSDictionary*)_dictionaryWithString:(NSString*)string;
 
 
 /**
@@ -34,6 +34,6 @@
 
  @return json字符串
  */
--(NSString*)lc_toJson;
+-(NSString*)_toJson;
 
 @end

@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @param contentImageView 需要缩放的图片
  */
-+(void)LC_imageZoomWithImageView:(UIImageView *)contentImageView;
++(void)_imageZoomWithImageView:(UIImageView *)contentImageView;
 
 @end
 

@@ -17,8 +17,8 @@
 ///------------end--------------
 
 ///------------通知--------------
-#define kNotification_NetworkChanged = @"LC_Notifiation_NetworkChanged"
-#define kNotification_Logout @"LC_Notifiation_Logout"//登出通知
+#define kNotification_NetworkChanged = @"_Notifiation_NetworkChanged"
+#define kNotification_Logout @"_Notifiation_Logout"//登出通知
 ///------------end--------------
 ///------------三方--------------
 #define kJuheAppKey @"9cdcc40c6539948c64fb80d98d7bddb8"

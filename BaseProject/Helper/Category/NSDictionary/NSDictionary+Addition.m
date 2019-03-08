@@ -26,15 +26,15 @@
     return msr;
 }
 
--(NSDictionary*)lc_dictionaryWithString:(NSString*)string{
+-(NSDictionary*)_dictionaryWithString:(NSString*)string{
     NSError* error = nil;
     id dic = [NSJSONSerialization JSONObjectWithData:[string dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
-    NSAssert(error, @"lc_dictionaryWithString-string error");
+    NSAssert(error, @"_dictionaryWithString-string error");
     return dic;
 }
 
 
--(NSString*)lc_toJson{
+-(NSString*)_toJson{
     NSError* error = nil;
     
     NSData* jsonData = [NSJSONSerialization dataWithJSONObject:self options:NSJSONWritingPrettyPrinted error:&error];

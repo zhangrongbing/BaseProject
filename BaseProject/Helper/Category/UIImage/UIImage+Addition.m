@@ -11,7 +11,7 @@
 
 @implementation UIImage (Addition)
 
--(UIImage*)lc_blurImage:(float) value{
+-(UIImage*)_blurImage:(float) value{
     CIContext* context = [CIContext contextWithOptions:nil];
     CIImage * image = [CIImage imageWithData:UIImagePNGRepresentation(self)];
     CIFilter* filter = [CIFilter filterWithName:@"CIGaussianBlur"];
@@ -25,7 +25,7 @@
     return resultImage;
 }
 
-+ (UIImage *)lc_animatedGIFWithData:(NSData *)data {
++ (UIImage *)_animatedGIFWithData:(NSData *)data {
     if (!data) {
         return nil;
     }
@@ -91,11 +91,11 @@
     return frameDuration;
 }
 
-+(UIImage*)lc_imageWithColor:(UIColor*)color{
-    return [self lc_imageWithColor:color size:CGSizeMake(1.f, 1.f)];
++(UIImage*)_imageWithColor:(UIColor*)color{
+    return [self _imageWithColor:color size:CGSizeMake(1.f, 1.f)];
 }
 
-+(UIImage*)lc_imageWithColor:(UIColor *)color size:(CGSize)size{
++(UIImage*)_imageWithColor:(UIColor *)color size:(CGSize)size{
     CGRect rect=CGRectMake(0.0f, 0.0f, size.width, size.height);
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -106,14 +106,14 @@
     return theImage;
 }
 
-+(NSString *)lc_base64StringForImage:(UIImage *) image{
++(NSString *)_base64StringForImage:(UIImage *) image{
     NSData *data = UIImageJPEGRepresentation(image, 0.75f);
     NSString *encodedImageStr = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     return encodedImageStr;
 }
 
 //字符串转图片
-+(UIImage *)lc_imageForBase64String:(NSString *)base64String
++(UIImage *)_imageForBase64String:(NSString *)base64String
 {
     if (!base64String) {
         return nil;
@@ -124,7 +124,7 @@
 }
 
 //为controller，截屏
-+ (UIImage*)lc_screenShot:(UIViewController*)controller
++ (UIImage*)_screenShot:(UIViewController*)controller
 {
     // 将要被截图的view,即窗口的根控制器的view(必须不含状态栏,默认ios7中控制器是包含了状态栏的)
     UIViewController *beyondVC = controller.view.window.rootViewController;
@@ -144,7 +144,7 @@
     return snapshot;
 }
 
-+(UIImage*)lc_imageWithView:(UIView*)view{
++(UIImage*)_imageWithView:(UIView*)view{
     UIGraphicsBeginImageContext(view.bounds.size);
     
     [view.layer renderInContext:UIGraphicsGetCurrentContext()];
@@ -153,6 +153,28 @@
     
     UIGraphicsEndImageContext();
     
+    return image;
+}
+
+-(UIImage*)_roundedCornerImageWithCornerRadius:(CGFloat)radius{
+    CGFloat width = self.size.width;
+    CGFloat height = self.size.height;
+    
+    if (radius < 0) {
+        radius = 0;
+    }
+    if (radius > MIN(width, height)) {
+        radius = MIN(width, height);
+    }
+    
+    CGRect rect = CGRectMake(0, 0, width, height);
+    UIGraphicsBeginImageContextWithOptions(self.size, NO, 1.f);
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:radius];
+    [path addClip];
+    [self drawInRect:rect];
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
     return image;
 }
 @end

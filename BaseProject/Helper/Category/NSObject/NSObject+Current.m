@@ -10,7 +10,7 @@
 
 @implementation NSObject (Current)
 
-+ (UIViewController *)lc_getCurrentVC {
++ (UIViewController *)_getCurrentVC {
     UIViewController *result = nil;
     UIWindow * window = [[UIApplication sharedApplication] keyWindow];
     //app默认windowLevel是UIWindowLevelNormal，如果不是，找到UIWindowLevelNormal的
@@ -54,7 +54,7 @@
 }
 
 //获取当前键盘
-+ (UIView *)lc_findKeyboard {
++ (UIView *)_findKeyboard {
     
     UIView *keyboardView = nil;
     

@@ -42,7 +42,7 @@
 
 -(IBAction)pressMD5Button:(id)sender{
     NSString *text = self.textField.text;
-    NSString *encryptText = [text lc_MD5];
+    NSString *encryptText = [text _MD5];
     self.encryptLabel.text = encryptText;
 }
 

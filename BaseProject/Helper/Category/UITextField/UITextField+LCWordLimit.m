@@ -12,23 +12,23 @@ static const void *lcCountKey = &lcCountKey;
 
 @implementation UITextField (LCWordLimit)
 
-- (void)lc_wordLimit:(NSInteger)count {
-    self.lc_maxLength = [NSString stringWithFormat:@"%ld",(long)count];
-    [self addTarget:self action:@selector(lc_valueChanged:) forControlEvents:UIControlEventEditingChanged];
+- (void)_wordLimit:(NSInteger)count {
+    self._maxLength = [NSString stringWithFormat:@"%ld",(long)count];
+    [self addTarget:self action:@selector(_valueChanged:) forControlEvents:UIControlEventEditingChanged];
     
 }
 
-- (NSString *)lc_maxLength {
+- (NSString *)_maxLength {
     return objc_getAssociatedObject(self, &lcCountKey);
 }
 
-- (void)setLc_maxLength:(NSString *)lc_count {
-    objc_setAssociatedObject(self, &lcCountKey, lc_count, OBJC_ASSOCIATION_COPY_NONATOMIC);
+- (void)set_maxLength:(NSString *)_count {
+    objc_setAssociatedObject(self, &lcCountKey, _count, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-- (void)lc_valueChanged:(UITextField *)sender {
+- (void)_valueChanged:(UITextField *)sender {
     //数字限制
-    NSInteger maximumNumberOfText = [self.lc_maxLength integerValue];
+    NSInteger maximumNumberOfText = [self._maxLength integerValue];
     NSString* string = self.text;
     NSString* lang = [self.textInputMode primaryLanguage];
     if ([lang isEqualToString:@"zh-Hans"]) {//中文输入

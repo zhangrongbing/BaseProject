@@ -12,7 +12,7 @@
 
 static CGRect oldFrame;
 
-+(void)LC_imageZoomWithImageView:(UIImageView *)contentImageView {
++(void)_imageZoomWithImageView:(UIImageView *)contentImageView {
 
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     [self scanBigImageWithImage:contentImageView.image frame:[contentImageView convertRect:contentImageView.bounds toView:window]];

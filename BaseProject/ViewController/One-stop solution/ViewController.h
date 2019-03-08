@@ -13,5 +13,4 @@ typedef void(^myBlock)(void);
 @interface ViewController : BaseTableViewController
 
 @property(nonatomic, strong) myBlock block;
-
 @end

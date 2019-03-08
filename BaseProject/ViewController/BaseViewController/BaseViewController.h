@@ -23,5 +23,8 @@
 
 @interface BaseViewController : UIViewController
 
+-(void)showLoadingView;
+
+-(void)hideLoadingView;
 
 @end

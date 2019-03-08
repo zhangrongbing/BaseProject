@@ -10,6 +10,6 @@
 
 @interface UITextView (Addition)
 
--(void)lc_placeholder:(NSString*)placeholder;
+-(void)_placeholder:(NSString*)placeholder;
 
 @end

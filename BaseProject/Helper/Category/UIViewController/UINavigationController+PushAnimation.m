@@ -10,22 +10,22 @@
 
 @implementation UINavigationController (PushAnimation)
 
-- (void)lc_pushViewController:(UIViewController *)viewController animationType:(KPrensentAnimationType)animationType direction:(KPrensentAnimationDirection)direction {
+- (void)_pushViewController:(UIViewController *)viewController animationType:(KPrensentAnimationType)animationType direction:(KPrensentAnimationDirection)direction {
     [self animationType:animationType direction:direction];
     [self pushViewController:viewController animated:NO];
 }
 
-- (UIViewController *)lc_popViewControllerAnimationType:(KPrensentAnimationType)animationType direction:(KPrensentAnimationDirection)direction {
+- (UIViewController *)_popViewControllerAnimationType:(KPrensentAnimationType)animationType direction:(KPrensentAnimationDirection)direction {
     [self animationType:animationType direction:direction];
     return [self popViewControllerAnimated:NO];
 }
 
-- (NSArray<UIViewController *> *)lc_popToViewController:(UIViewController *)viewController animationType:(KPrensentAnimationType)animationType direction:(KPrensentAnimationDirection)direction {
+- (NSArray<UIViewController *> *)_popToViewController:(UIViewController *)viewController animationType:(KPrensentAnimationType)animationType direction:(KPrensentAnimationDirection)direction {
     [self animationType:animationType direction:direction];
     return [self popToViewController:viewController animated:NO];
 }
 
-- (NSArray<UIViewController *> *)lc_popToRootViewControllerAnimationType:(KPrensentAnimationType)animationType direction:(KPrensentAnimationDirection)direction {
+- (NSArray<UIViewController *> *)_popToRootViewControllerAnimationType:(KPrensentAnimationType)animationType direction:(KPrensentAnimationDirection)direction {
     [self animationType:animationType direction:direction];
     return [self popToRootViewControllerAnimated:NO];
 }

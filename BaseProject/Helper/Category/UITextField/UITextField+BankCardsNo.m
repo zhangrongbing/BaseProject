@@ -10,7 +10,7 @@
 
 @implementation UITextField (BankCardsNo)
 
--(void)lc_bankCardsNo{
+-(void)_bankCardsNo{
     self.keyboardType = UIKeyboardTypeDecimalPad;
     self.delegate = self;
 }

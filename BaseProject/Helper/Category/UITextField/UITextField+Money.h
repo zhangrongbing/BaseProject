@@ -11,6 +11,6 @@
 @interface UITextField (Money)<UITextFieldDelegate>
 
 //输入金额
--(void)lc_money;
+-(void)_money;
 
 @end
