@@ -41,6 +41,9 @@
     //初始化segment
     [self initSegmentControl];
     [self initPageController];
+    
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"VTMagic" style:UIBarButtonItemStylePlain target:self action:@selector(pressRightItem:)];
+    self.navigationItem.rightBarButtonItem = rightItem;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,6 +67,11 @@
     UIView *pageControllerView = self.pageController.view;
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[pageControllerView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(pageControllerView)]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[segmentControl]-0-[pageControllerView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(segmentControl, pageControllerView)]];
+}
+
+#pragma mark - Action
+-(void)pressRightItem:(UIBarButtonItem *)item{
+    
 }
 
 #pragma mark - init

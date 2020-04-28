@@ -44,7 +44,7 @@ SINGLE_M(NetworkingManager);
         self.manager.requestSerializer.timeoutInterval = 6.f;
         [self.manager.requestSerializer setValue:self.token forHTTPHeaderField:@"token"];
         
-        AFNetworkReachabilityManager *reachabilityManager = [AFNetworkReachabilityManager sharedManager];
+        AFNetworkReachabilityManager *reachabilityManager = self.manager.reachabilityManager;
         static dispatch_once_t token;
         dispatch_once(&token, ^{
             [reachabilityManager startMonitoring];

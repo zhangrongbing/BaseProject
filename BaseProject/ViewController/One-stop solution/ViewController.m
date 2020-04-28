@@ -146,7 +146,8 @@ static NSString *CellIdentifier = @"CellIdentifier";
                                   @{@"读取二维码":@"ScanQRCodeController"}]},
                        @{@"多媒体":@[@{@"流媒体":@"SteamingMediaController"}]},
                        @{@"控件点击":@[@{@"ClickEvent":@"ClickEventViewController"}]},
-                       @{@"代码块":@[@{@"Block":@"BlockViewController"}]}];
+                       @{@"代码块":@[@{@"Block":@"BlockViewController"}]},
+    @{@"功能":@[@{@"定位":@"LocationViewController"}]}];
 }
 
 #pragma mark - Action

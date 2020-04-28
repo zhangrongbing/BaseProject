@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "NSObject+Single.h"
+#import <UIKit/UIKit.h>
 
 @class UserModel;
 NS_ASSUME_NONNULL_BEGIN
@@ -16,9 +17,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic, assign) BOOL isLogin;
 @property(nonatomic, strong) UserModel *userModel;
-
+@property(nonatomic, strong) UINavigationController *nav;
 SINGLE_H(Client);
+
 -(void)clean;
+
 @end
 
 @interface UserModel : NSObject

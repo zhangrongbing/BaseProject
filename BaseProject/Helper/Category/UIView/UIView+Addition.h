@@ -41,4 +41,5 @@
 -(void)_setCornerRadius:(CGFloat)radius;
 -(void)_setCornerRadius:(CGFloat)corner roundingCorners:(UIRectCorner)roundingCorners;
 -(NSArray*)_allSubviewsForView:(UIView*)view;
+-(void)_dismissKeyboardForTap;//点击view，键盘消失。
 @end

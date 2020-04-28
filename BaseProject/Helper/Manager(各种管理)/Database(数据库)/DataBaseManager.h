@@ -22,5 +22,7 @@ SINGLE_H(DataBaseManager);
 -(void)removeHistoryForCurrentUser;
 -(void)removeHistoryForUserId:(NSString*)userId;
 
-
+-(void)addLat:(double) lat lng:(double)lng network:(BOOL)network line:(NSString*)line;
+-(NSArray*)getAnns;
+-(void)clearAnn;
 @end

@@ -16,11 +16,13 @@ MJCodingImplementation
 
 -(void)setUserModel:(UserModel *)userModel{
     NSAssert(userModel, @"userModel is not nil");
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:userModel];
     kSetUserDefaults(userModel, @"UserModel");
 }
 
 -(UserModel*)userModel{
-    UserModel *userModel = kGetUserDefaults(@"UserModel");
+    NSData *data = kGetUserDefaults(@"UserModel");
+    UserModel *userModel = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     if (kISNullObject(userModel)) {
         return [UserModel new];
     }

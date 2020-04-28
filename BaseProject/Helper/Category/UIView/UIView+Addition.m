@@ -155,6 +155,15 @@
     }
     return self.bounds;
 }
+
+-(void)_dismissKeyboardForTap{
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_pressBG:)];
+    [self addGestureRecognizer:tap];
+}
+
+-(void)_pressBG:(UIGestureRecognizer*)tap{
+    [self endEditing:YES];
+}
 @end
 
 //animationWithKeyPath的值：

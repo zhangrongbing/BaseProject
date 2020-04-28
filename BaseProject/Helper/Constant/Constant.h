@@ -34,4 +34,5 @@
 #define Localizable_en @"en"
 ///------------end--------------
 
+#define kMAP_KEY @"7380bbf360560fcbc5899286c5390ba1"
 #endif /* Header_h */

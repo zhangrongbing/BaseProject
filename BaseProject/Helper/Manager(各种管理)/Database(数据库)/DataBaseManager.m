@@ -34,7 +34,9 @@ SINGLE_M(DataBaseManager);
 
 //创建表
 -(void)createTable{
-    NSString* sql = @"CREATE TABLE SearchHistory (id integer primary key autoincrement,userId text, keywords text, lastDatetime datetime);";
+    NSString* sql = @"\
+    CREATE TABLE SearchHistory (id integer primary key autoincrement,userId text, keywords text, lastDatetime datetime);\
+    CREATE TABLE Location (id integer primary key autoincrement,lat number, lng number, time datetime, type number, line text);";
     if (![self.db open]) {
         DebugLog(@"数据库打开失败error:  %@",[self.db lastErrorMessage]);
     }
@@ -45,6 +47,50 @@ SINGLE_M(DataBaseManager);
     [self.db close];
 }
 
+-(void)addLat:(double) lat lng:(double)lng network:(BOOL)network line:(NSString*)line{
+    if (![self.db open]) {
+        DebugLog(@"数据库打开失败error:  %@",[self.db lastErrorMessage]);
+        return;
+    }
+    NSString *sql = @"INSERT INTO Location (lat, lng, time, type, line) VALUES (:lat, :lng , :time, :type, :line)";
+    NSDictionary *arguments = @{@"lat": [NSNumber numberWithFloat:lat], @"lng": [NSNumber numberWithFloat:lng], @"time": [NSDate new], @"type": [NSNumber numberWithInteger:network], @"line": line};
+    BOOL success = [self.db executeUpdate:sql withParameterDictionary:arguments];
+    if (!success) {
+        DebugLog(@"%s:数据插入失败", __FUNCTION__);
+    }
+    [self.db close];
+}
+
+-(NSArray*)getAnns{
+    if (![self.db open]) {
+        DebugLog(@"数据库打开失败error:  %@",[self.db lastErrorMessage]);
+        return @[];
+    }
+    NSString *sql = @"SELECT lat, lng, time, type, line FROM Location ORDER BY time DESC";
+    FMResultSet *set = [self.db executeQuery:sql];
+    NSMutableArray *resultArr = [NSMutableArray array];
+    while ([set next]) {
+        NSString *lat = [set objectForColumn:@"lat"];
+        NSString *lng = [set objectForColumn:@"lng"];
+        NSString *time = [set stringForColumn:@"time"];
+        NSString *type = [set stringForColumn:@"type"];
+        NSString *line = [set stringForColumn:@"line"];
+        NSDictionary *resultData = @{@"lat": lat, @"lng": lng, @"time": time, @"type":type, @"line": line};
+        [resultArr addObject:resultData];
+    }
+    return resultArr;
+}
+-(void)clearAnn{
+    if (![self.db open]) {
+        DebugLog(@"数据库打开失败error:  %@",[self.db lastErrorMessage]);
+    }
+    NSString *sql = @"DELETE FROM Location";
+    BOOL success = [self.db executeUpdate:sql];
+    if (!success) {
+        DebugLog(@"%s:清空定位表失败", __FUNCTION__);
+    }
+    [self.db close];
+}
 -(void)insertHistoryKeywords:(NSString*)keywords{
     NSAssert(keywords, @"keywords is not nil");
     [self insertHistoryKeywords:keywords userId:[Client sharedInstance].userModel.userId];

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -227,6 +227,11 @@
 		58FDE62B219C164700830D99 /* TwoOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FDE62A219C164700830D99 /* TwoOperation.m */; };
 		58FDE62E219C165600830D99 /* ThreeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FDE62D219C165600830D99 /* ThreeOperation.m */; };
 		7E704F1127D728EF879440C7 /* libPods-BaseProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03723279E323ED3C8C992BD1 /* libPods-BaseProject.a */; };
+		D03FF021234C47E000BD85B4 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D03FF01F234C47E000BD85B4 /* LocationViewController.m */; };
+		D03FF022234C47E000BD85B4 /* LocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D03FF020234C47E000BD85B4 /* LocationViewController.xib */; };
+		D0509442234D681600E805C2 /* LocationMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D0509440234D681600E805C2 /* LocationMapVC.m */; };
+		D0509443234D681600E805C2 /* LocationMapVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0509441234D681600E805C2 /* LocationMapVC.xib */; };
+		D0509446234D69F100E805C2 /* MyAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0509445234D69F100E805C2 /* MyAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -656,6 +661,14 @@
 		58FDE62D219C165600830D99 /* ThreeOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThreeOperation.m; sourceTree = "<group>"; };
 		9DF81C857D3C8A360DAD54A6 /* Pods-BaseProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BaseProject/Pods-BaseProject.debug.xcconfig"; sourceTree = "<group>"; };
 		BC11FE5F171B2985AD22FC93 /* Pods-BaseProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-BaseProject/Pods-BaseProject.release.xcconfig"; sourceTree = "<group>"; };
+		D03FF01E234C47E000BD85B4 /* LocationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
+		D03FF01F234C47E000BD85B4 /* LocationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
+		D03FF020234C47E000BD85B4 /* LocationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationViewController.xib; sourceTree = "<group>"; };
+		D050943F234D681600E805C2 /* LocationMapVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationMapVC.h; sourceTree = "<group>"; };
+		D0509440234D681600E805C2 /* LocationMapVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationMapVC.m; sourceTree = "<group>"; };
+		D0509441234D681600E805C2 /* LocationMapVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationMapVC.xib; sourceTree = "<group>"; };
+		D0509444234D69F100E805C2 /* MyAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyAnnotation.h; sourceTree = "<group>"; };
+		D0509445234D69F100E805C2 /* MyAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1414,6 +1427,7 @@
 		58B7464921115EC3000BCD6D /* One-stop solution */ = {
 			isa = PBXGroup;
 			children = (
+				D03FF01D234C47CD00BD85B4 /* LocationViewController */,
 				58B7464021113FB3000BCD6D /* ViewController.h */,
 				58B7464121113FB3000BCD6D /* ViewController.m */,
 				582A1DA121339C0500B50D7D /* 生命周期 */,
@@ -1738,7 +1752,7 @@
 				58E2DAB920DA01E000006895 /* Category */,
 				58E2DB1320DA01E000006895 /* Tool */,
 				58E2DB0720DA01E000006895 /* Manager(各种管理) */,
-				58E2DA4720DA019100006895 /* MyConfig */,
+				58E2DA4720DA019100006895 /* Client */,
 				58E2DA4A20DA019100006895 /* Operation */,
 				58E2DA5320DA019100006895 /* Constant */,
 				58E2DA5620DA019100006895 /* Model */,
@@ -1747,13 +1761,13 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
-		58E2DA4720DA019100006895 /* MyConfig */ = {
+		58E2DA4720DA019100006895 /* Client */ = {
 			isa = PBXGroup;
 			children = (
 				581C99C5223105F20087B151 /* Client.h */,
 				581C99C6223105F20087B151 /* Client.m */,
 			);
-			path = MyConfig;
+			path = Client;
 			sourceTree = "<group>";
 		};
 		58E2DA4A20DA019100006895 /* Operation */ = {
@@ -2265,6 +2279,29 @@
 			path = Operation;
 			sourceTree = "<group>";
 		};
+		D03FF01D234C47CD00BD85B4 /* LocationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D050943C234D67D500E805C2 /* LocationMapVC */,
+				D03FF01E234C47E000BD85B4 /* LocationViewController.h */,
+				D03FF01F234C47E000BD85B4 /* LocationViewController.m */,
+				D03FF020234C47E000BD85B4 /* LocationViewController.xib */,
+			);
+			path = LocationViewController;
+			sourceTree = "<group>";
+		};
+		D050943C234D67D500E805C2 /* LocationMapVC */ = {
+			isa = PBXGroup;
+			children = (
+				D050943F234D681600E805C2 /* LocationMapVC.h */,
+				D0509440234D681600E805C2 /* LocationMapVC.m */,
+				D0509441234D681600E805C2 /* LocationMapVC.xib */,
+				D0509444234D69F100E805C2 /* MyAnnotation.h */,
+				D0509445234D69F100E805C2 /* MyAnnotation.m */,
+			);
+			path = LocationMapVC;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2338,6 +2375,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 58E2DA2420D9F72600006895;
 			productRefGroup = 58E2DA2E20D9F72600006895 /* Products */;
@@ -2378,6 +2416,7 @@
 				5818238721181E4100225217 /* TabViewController.xib in Resources */,
 				0AF68AE32189874A00A5FCA0 /* intro_1.jpg in Resources */,
 				584C25FA2137E09100CC59CC /* SelectAddressTableViewCell.xib in Resources */,
+				D03FF022234C47E000BD85B4 /* LocationViewController.xib in Resources */,
 				58CA962E2112CEBE0032D145 /* SwitchTableViewCell.xib in Resources */,
 				58F0226F212BAF960092A72D /* ButtonViewController.xib in Resources */,
 				588498A12190310D00CA2F8B /* AliyunEmasServices-Info.plist in Resources */,
@@ -2387,6 +2426,7 @@
 				5840A2E521251239002FA308 /* CiphertextViewController.xib in Resources */,
 				587B16FD20DFEE6C005524EB /* Localizable.strings in Resources */,
 				58F137362138EF3F00F06193 /* SearchHistoryTitleTableViewCell.xib in Resources */,
+				D0509443234D681600E805C2 /* LocationMapVC.xib in Resources */,
 				0AF68AE22189874A00A5FCA0 /* intro_3.jpg in Resources */,
 				585A98042148C37D00E91373 /* TextFieldViewController.xib in Resources */,
 				58BC969121C10C2D00F8D871 /* LoginTwoViewController.xib in Resources */,
@@ -2411,21 +2451,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BaseProject/Pods-BaseProject-resources.sh",
-				"${PODS_ROOT}/HXWeiboPhotoPicker/微博照片选择/HXWeiboPhotoPicker/HXWeiboPhotoPicker.bundle",
-				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
-				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
-				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
-				"${PODS_ROOT}/YBImageBrowser/YBImageBrowser/YBImageBrowser.bundle",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BaseProject/Pods-BaseProject-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HXWeiboPhotoPicker.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TZImagePickerController.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/YBImageBrowser.bundle",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BaseProject/Pods-BaseProject-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2506,6 +2537,7 @@
 				0AF68ABA2186EDCA00A5FCA0 /* Notificationhandler.m in Sources */,
 				58E2DB4420DA01E000006895 /* UISearchBar+Addition.m in Sources */,
 				58E2DB2D20DA01E000006895 /* BaseNavigationController.m in Sources */,
+				D0509446234D69F100E805C2 /* MyAnnotation.m in Sources */,
 				58E2DB4B20DA01E000006895 /* UITextField+Money.m in Sources */,
 				0A275C7A218AADF9006B2022 /* LCAdvertiseView.m in Sources */,
 				58CA962D2112CEBE0032D145 /* SwitchTableViewCell.m in Sources */,
@@ -2547,6 +2579,7 @@
 				5886177521BDF79B001FCF18 /* LoginListController.m in Sources */,
 				0AF68ADD21897B9600A5FCA0 /* LCIntroductoryPagesView.m in Sources */,
 				58FAD215214663F2009CCA65 /* BottomExpansionView.m in Sources */,
+				D0509442234D681600E805C2 /* LocationMapVC.m in Sources */,
 				58CD3B0221E5DDA900766606 /* PushManager.m in Sources */,
 				58D7E29121217F7200B14383 /* SharedViewController.m in Sources */,
 				0A736CC7218BE97B00050D44 /* ImageZoomViewController.m in Sources */,
@@ -2627,6 +2660,7 @@
 				58E2DB3520DA01E000006895 /* UIScrollView+Refresh.m in Sources */,
 				58F0226E212BAF960092A72D /* ButtonViewController.m in Sources */,
 				5891978120EB264600537612 /* DataPickerViewController.m in Sources */,
+				D03FF021234C47E000BD85B4 /* LocationViewController.m in Sources */,
 				582794E92135113E00C4E780 /* WeatherProvinceOperation.m in Sources */,
 				0AF68AC02189570F00A5FCA0 /* YYFPSLabel.m in Sources */,
 				58B0BA19214756AA00A0852D /* SegmentCodeViewController.m in Sources */,
@@ -2775,7 +2809,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2828,7 +2862,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -2843,15 +2877,15 @@
 				CODE_SIGN_ENTITLEMENTS = BaseProject/BaseProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = CH262QZEM8;
+				DEVELOPMENT_TEAM = V5T4J37QCK;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/$(PRODUCT_NAME)/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hanrui.baseProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.icer.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2864,16 +2898,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = BaseProject/BaseProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CH262QZEM8;
+				DEVELOPMENT_TEAM = V5T4J37QCK;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/$(PRODUCT_NAME)/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hanrui.baseProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.icer.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

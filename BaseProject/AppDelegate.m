@@ -11,10 +11,11 @@
 #import "BaseNavigationController.h"
 #import "AppDelegate+RemoteNotification.h"
 #import "Notificationhandler.h"
-#import "YYFPSLabel.h"
+#import "Client.h"
 #import "AppDelegate+IntroducePageViews.h"
 #import "AppDelegate+ADs.h"
 #import "AppDelegate+Bugly.h"
+#import <AMapFoundationKit/AMapFoundationKit.h>
 
 //@interface AppDelegate ()
 
@@ -32,6 +33,7 @@
     _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     ViewController *controller = [[ViewController alloc] init];
     BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:controller];
+    [Client sharedInstance].nav = nav;
     _window.rootViewController = nav;
     [_window makeKeyAndVisible];
     
@@ -39,6 +41,8 @@
     
 #else
     [self registerAPNS:application];
+    [[AMapServices sharedServices] setEnableHTTPS:YES];
+    [AMapServices sharedServices].apiKey = kMAP_KEY;
 #endif
 
 #if DEBUG
